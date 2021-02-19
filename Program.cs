@@ -196,14 +196,30 @@ namespace exercicios
             return this.Saldo;
         }
 
-        public string GetNomeTitular()
+        public string GetTitular()
         {
-            return this.NomeTitular;
+            return this.Titular;
+        }
+
+        public string GetGerente()
+        {
+            return this.Gerente;
+        }
+
+        public void Deposito(double valor)
+        {
+            this.SetSaldo(this.GetSaldo() + valor);
+        }
+
+        public void Saque(double valor)
+        {
+            this.SetSaldo(this.GetSaldo() - valor);
         }
 
         public override string ToString()
         {
-            return $"Nome do Titular: {this.GetNomeTitular()}" +
+            return $"Nome do Titular: {this.GetTitular()}" +
+            $"\nNome do Gerente: {this.GetGerente()}" +
             $"\nAgência: {this.GetAgencia()}" +
             $"\nNúmero Conta: {this.GetNumeroConta()}" +
             $"\nSaldo: {this.GetSaldo()}";
@@ -220,21 +236,70 @@ namespace exercicios
                 return false;
             }
             ContaCorrente contacorrente = (ContaCorrente) obj;
-            return this.Nome == contacorrente.GetNome();
+            return this.GetNumeroConta() == contaCorrente.GetNumeroConta() &&
+            this.GetAgencia() == contaCorrente.GetAgencia();
         }
     } // Termina a classe conta corrente.
 
     public class Titular : Pessoa
     {
+        private string Cpf;
+
         public Titular(
             string Nome,
             double Peso,
             double Altura,
-            string DataNascimento
-        )
+            string DataNascimento,
+            string Cpf
+        ) :
+            base(Nome, Peso, Altura, DataNascimento)
         {
+            this.SetCpf(Cpf);
         }
-    }
+
+        public void SetCpf(string Cpf)
+        {
+            this.Cpf = Cpf;
+        }
+
+        public string GetCpf()
+        {
+            return this.Cpf;
+        }
+    } // Termino da classe titular.
+
+    public class Gerente : Pessoa
+    {
+        private string Matricula;
+
+        public Gerente(
+            string Nome,
+            double Peso,
+            double Altura,
+            string DataNascimento,
+            string Matricula
+        ) :
+            base(Nome, Peso, Altura, DataNascimento)
+        {
+            this.SetMatricula(Matricula);
+        }
+
+        public void SetMatricula(string Matricula)
+        {
+            this.Matricula = Matricula;
+        }
+
+        public string GetMatricula()
+        {
+            return this.Matricula;
+        }
+
+        public override string ToString()
+        {
+            return $"Nome: {this.GetNome()}\n" +
+            $"Matrícula: {this.GetMatricula()}";
+        }
+    } //Termino da classe gerente.
 
     public class Program
     {
@@ -468,54 +533,52 @@ namespace exercicios
         {
             Console.WriteLine("Digite o Nome do Titular: ");
             string nomeTitular = Console.ReadLine();
+            Titular titular = new Titular(nomeTitular, 0, 0, "", "");
+
+            Console.WriteLine("Digite o Nome do Gerente: ");
+            string nomeGerente = Console.ReadLine();
+            Gerente gerente = new Gerente(nomeGerente, 0, 0, "", "");
+
             Console.WriteLine("Digite o Número da Conta: ");
             string numeroConta = Console.ReadLine();
+
             Console.WriteLine("Digite a Agência: ");
             string agencia = Console.ReadLine();
 
             ContaCorrente conta =
-                new ContaCorrente(numeroConta, agencia, nomeTitular);
-            int opcao = 0;
-
+                new ContaCorrente(numeroConta, agencia, titular, gerente);
+            int repeticao = 0;
             do
             {
-                Console.WriteLine("Escolha sua Opção");
-                Console.WriteLine("[0] - Sair.");
-                Console.WriteLine("[1] - Depositar.");
-                Console.WriteLine("[2] - Sacar.");
-                Console.WriteLine("[3] - Ver Saldo.");
-                opcao = Convert.ToInt32(Console.ReadLine());
-                switch (opcao)
+                Console.WriteLine("Digite a operação:");
+                Console.WriteLine("[1] - Depósito");
+                Console.WriteLine("[2] - Saque");
+                Console.WriteLine("[3] - Saldo");
+                int operacao = Convert.ToInt32(Console.ReadLine());
+                switch (operacao)
                 {
                     case 0:
                         {
                             Console
-                                .WriteLine("Obrigado por utilizar nosso programa!");
+                                .WriteLine("Obrigado por utilizar o Programa!");
                         }
+                        break;
                     case 1:
                         {
-                            Console
-                                .WriteLine("Digite o Valor a ser Depósitado: ");
-                            deposito = Convert.ToDouble(Console.ReadLine());
-
-                            Console
-                                .WriteLine($"O Valor Depositado foi: {
-                                    deposito}");
+                            Console.WriteLine("Digite o valor para Depósito: ");
+                            conta
+                                .Deposito(Convert.ToDouble(Console.ReadLine()));
                             break;
                         }
                     case 2:
                         {
-                            Console.WriteLine("Digite o Valor a ser Sacado: ");
-                            saque = Convert.ToDouble(Console.ReadLine());
-
-                            Console.WriteLine($"O Valor Sacado foi: {saque}");
+                            Console.WriteLine("Digite o valor para Sacar: ");
+                            conta.Saque(Convert.ToDouble(Console.ReadLine()));
                             break;
                         }
                     case 3:
                         {
-                            Console
-                                .WriteLine($"O Saldo Total desta conta e de: {
-                                    saldoTotal}");
+                            Console.WriteLine (conta);
                             break;
                         }
                     default:
@@ -524,8 +587,11 @@ namespace exercicios
                             break;
                         }
                 }
+                Console.WriteLine("Deseja realizar outra operação?");
+                Console.WriteLine("[1] - Sim");
+                repeticao = Convert.ToInt32(Console.ReadLine());
             }
-            while (opcao != 0);
+            while (repeticao == 1);
         } //Termino do programa da conta corrente.
     }
 } // Termino do programa.
