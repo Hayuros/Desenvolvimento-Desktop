@@ -15,6 +15,8 @@ namespace Model
 
         private int ReturnDays; // Dias para Devolução
 
+        private List<Client> clients = new List<CLient>();
+
         public Client(
             int Id,
             string Name,
@@ -28,6 +30,8 @@ namespace Model
             this.Birth = Birth;
             this.Identification = Identification;
             this.ReturnDays = ReturnDays;
+
+            clients.add(this);
         }
 
         public void SetId(int Id)
@@ -78,6 +82,11 @@ namespace Model
         public int GetReturnDays()
         {
             return this.ReturnDays;
+        }
+
+        public List<CLient> GetClients()
+        {
+            return this.clients;
         }
 
         public override string ToString()

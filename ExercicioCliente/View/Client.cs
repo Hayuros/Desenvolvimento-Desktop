@@ -28,11 +28,19 @@ namespace View
             string identification = Console.ReadLine();
             Console.WriteLine("\nInforme a quantidade de dias de retorno.");
             int returnDays = Convert.ToInt32(Console.ReadLine());
+
+            Controller
+                .CreateClient(int id,
+                string name,
+                string birth,
+                string identification,
+                int returnDays);
         } //Término do programa de cadastro de clientes.
 
         public static void ListClient()
         {
             Console.WriteLine("\nListagem de Clientes");
+            Model.Client.GetClients();
         }
     } //Término da classe client.
 
@@ -79,5 +87,5 @@ namespace View
             }
             while (opcao != 0);
         } //Término da main.
-    }//Término da classe program.
+    } //Término da classe program.
 } //Término do namespace.
