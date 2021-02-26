@@ -19,5 +19,5 @@ namespace Controller
                 string Identification,
                 int ReturnDays);
         }
-    }
+    }//Término da slasse client.
 }

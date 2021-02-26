@@ -96,5 +96,5 @@ namespace Model
             $"CPF: {this.GetIdentification()}" +
             $"Dias de retorno: {this.GetReturnDays()}";
         }
-    }
+    }//Término da classe client.
 }
