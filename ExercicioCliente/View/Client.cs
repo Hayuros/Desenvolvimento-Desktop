@@ -41,7 +41,7 @@ namespace View
         {
             Console.WriteLine("\nListagem de Clientes");
             Model.Client.GetClients();
-        }
+        }//Término do programa de listagem dos clientes.
     } //Término da classe client.
 
     public class Program
