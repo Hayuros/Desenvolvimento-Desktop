@@ -1,0 +1,13 @@
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\obj\Debug\netcoreapp3.1\ExercicioCliente.csprojAssemblyReference.cache
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\obj\Debug\netcoreapp3.1\ExercicioCliente.AssemblyInfoInputs.cache
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\obj\Debug\netcoreapp3.1\ExercicioCliente.AssemblyInfo.cs
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\obj\Debug\netcoreapp3.1\ExercicioCliente.csproj.CoreCompileInputs.cache
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\bin\Debug\netcoreapp3.1\ExercicioCliente.exe
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\bin\Debug\netcoreapp3.1\ExercicioCliente.deps.json
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\bin\Debug\netcoreapp3.1\ExercicioCliente.runtimeconfig.json
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\bin\Debug\netcoreapp3.1\ExercicioCliente.runtimeconfig.dev.json
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\bin\Debug\netcoreapp3.1\ExercicioCliente.dll
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\bin\Debug\netcoreapp3.1\ExercicioCliente.pdb
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\obj\Debug\netcoreapp3.1\ExercicioCliente.dll
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\obj\Debug\netcoreapp3.1\ExercicioCliente.pdb
+C:\Users\Hayuros\Documents\desktop\Desenvolvimento-Desktop\ExercicioCliente\obj\Debug\netcoreapp3.1\ExercicioCliente.genruntimeconfig.cache
