@@ -3,38 +3,41 @@ using System.Collections.Generic;
 
 namespace View
 {
-    public class Cliente
+    public static class Cliente
     {
         
         public static void CriarCliente()
         {
             Console.WriteLine("\nCadastro de Clientes!");
-            Console.WriteLine("\nInforme o seu Id.");
-            string id = Console.ReadLine();
             Console.WriteLine("\nInforme o seu nome.");
-            string nome = Console.ReadLine();
+            string Nome = Console.ReadLine();
             Console.WriteLine("\nInforme o seu aniversário.");
-            string aniversario = Console.ReadLine();
+            string Aniversario = Console.ReadLine();
             Console.WriteLine("\nInforme o seu CPF.");
-            string identificacao = Console.ReadLine();
+            string Identificacao = Console.ReadLine();
             Console.WriteLine("\nInforme a quantidade de dias de retorno.");
-            string diasRetorno =Console.ReadLine();
-
-            Controller.Cliente.CriarCliente(id,
-                nome,
-                aniversario,
-                identificacao,
-                diasRetorno);
+            string DiasRetorno =Console.ReadLine();
+            try
+            {
+                Controller.Cliente.CriarCliente(Nome, Aniversario, Identificacao, DiasRetorno);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine ($"As Informações digitadas estão incorretas: {e.Message}");
+            }
         } //Término do programa de cadastro de clientes.
 
         public static void ListaCliente()
         {
+            Console.WriteLine("*************************************");
             Console.WriteLine("\nListagem de Clientes");
-            foreach (Model.Cliente item in Model.Cliente.GetClientes())
+            Console.WriteLine("*************************************");
+            foreach (Model.Cliente cliente in Controller.Cliente.ListaCliente())
             {
-                Console.WriteLine(item);
+                Console.WriteLine("=====================================");
+                Console.WriteLine(cliente);
             }
-            
+            Console.WriteLine("=====================================");
         }//Término do programa de listagem dos clientes.
     } //Término da classe cliente.
 

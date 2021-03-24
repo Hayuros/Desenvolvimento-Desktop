@@ -7,10 +7,11 @@ namespace ExercicioCliente
         public static void Main(string[] args)
         {
             int op = 0;
-            Console.WriteLine("Programa da Locadora");
+            Console.WriteLine("---------Programa da Locadora---------");
             do
             {
-                Console.WriteLine("[0] - Sair.");
+                Console.WriteLine("*************************************");
+                Console.WriteLine("Faça sua Escolha");
                 Console.WriteLine("[1] - Cadastrar Cliente.");
                 Console.WriteLine("[2] - Listar Clientes.");
                 Console.WriteLine("[3] - Cadastrar Veículos.");
@@ -19,7 +20,8 @@ namespace ExercicioCliente
                 Console.WriteLine("[6] - Listar Veículos.");
                 Console.WriteLine("[7] - Listar Veículos.");
                 Console.WriteLine("[8] - Listar Veículos.");
-                Console.WriteLine("Faça sua Escolha");
+                Console.WriteLine("[0] - Sair.");
+                Console.WriteLine("*************************************");
                 op = Convert.ToInt32(Console.ReadLine());
                 switch (op)
                 {
