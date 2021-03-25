@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Repositorio;
+using System.Linq;
+using Repository;
 
 namespace Model
 {
@@ -21,7 +22,7 @@ namespace Model
             string Identificacao,
             int DiasRetorno)
         {
-            this.Id = Context.cliente.Conta;
+            this.Id = Context.clientes.Count;
             this.Nome = Nome;
             this.Aniversario = Aniversario;
             this.Identificacao = Identificacao;
@@ -36,9 +37,8 @@ namespace Model
                 this.Id,
                 this.Nome,
                 this.Aniversario,
-                this.Identificacao,
                 this.DiasRetorno,
-                Locacao.GetConta(this.Id)
+                Locacao.GetCount(this.Id)
             );
         }
 
@@ -73,13 +73,13 @@ namespace Model
             return GetClientes().Count();
         }
         
-        public static void AddCliente (Cliente Cliente) {
+        public static void AddCliente (Cliente cliente) {
             Context.clientes.Add (cliente);
         }
 
         public static Cliente GetCliente(int Id) {
 
-            IEnumerable<Cliente> query = from cliente in Context.clientes where cliente.Id == Id select Cliente;
+            IEnumerable<Cliente> query = from cliente in Context.clientes where cliente.Id == Id select cliente;
 
             return query.First();
             

@@ -5,12 +5,12 @@ namespace Repository
 {
     public class Context 
     {
-        public static readonly List<Cliente> clientes = new ();
-        public static readonly List<VeiculoPesado> veiculosPesados = new ();
-        public static readonly List<VeiculoLeve> veiculosLeves = new ();
-        public static readonly List<Locacao> locacoes = new ();
-        public static readonly List<LocacaoVeiculoPesado> locacoesVeiculosPesados = new ();
-        public static readonly List<LocacaoVeiculoLeve> locacoesVeiculosLeves = new ();
+        public static readonly List<Cliente> clientes = new List<Cliente>();
+        public static readonly List<VeiculoPesado> veiculosPesados = new List<VeiculoPesado>();
+        public static readonly List<VeiculoLeve> veiculosLeves = new List<VeiculoLeve>();
+        public static readonly List<Locacao> locacoes = new List<Locacao>();
+        public static readonly List<LocacaoVeiculoPesado> locacoesVeiculosPesados = new List<LocacaoVeiculoPesado>();
+        public static readonly List<LocacaoVeiculoLeve> locacoesVeiculosLeves = new List<LocacaoVeiculoLeve>();
 
     }
 }

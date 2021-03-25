@@ -8,27 +8,24 @@ namespace Controller
     {
         public static Model.Cliente CriarCliente(
             string Nome,
-            string Aniversario,
+            string StringAniversario,
             string Identificacao,
             string DiasRetorno
         )
         {
-            Regex rgx = new("^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$");
+            Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$");
             if (!rgx.IsMatch (Identificacao))
             {
-                throw new Exception ("\nC.P.F. Inválido\n
-                Por favor digite um cpf válido.\n
-                Ex: 000.000.000-00");
+                throw new Exception ("\nC.P.F. Inválido\nPor favor digite um cpf válido.\nEx: 000.000.000-00");
             }
 
             DateTime Aniversario;
 
             try
             {
-                Aniversario = Convert.ToDateTime (Aniversario);
+                Aniversario = Convert.ToDateTime (StringAniversario);
             } catch {
-                throw new Exception ("\nData de Nascimento Inválida\n
-                Digite uma data válida");
+                throw new Exception ("\nData de Nascimento Inválida\nDigite uma data válida\nEx: dd/mm/aaaa");
             }
 
             return new Model.Cliente(Nome,
@@ -39,7 +36,7 @@ namespace Controller
         } 
 
         public static IEnumerable<Model.Cliente> ListaCliente() {
-                return Model.Cliente.GetCliente();
+                return Model.Cliente.GetClientes();
             }
 
         public static Model.Cliente GetCliente(int Id) {

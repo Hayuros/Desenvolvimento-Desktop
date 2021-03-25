@@ -14,12 +14,12 @@ namespace ExercicioCliente
                 Console.WriteLine("Faça sua Escolha");
                 Console.WriteLine("[1] - Cadastrar Cliente.");
                 Console.WriteLine("[2] - Listar Clientes.");
-                Console.WriteLine("[3] - Cadastrar Veículos.");
-                Console.WriteLine("[4] - Listar Veículos.");
-                Console.WriteLine("[5] - Listar Veículos.");
-                Console.WriteLine("[6] - Listar Veículos.");
-                Console.WriteLine("[7] - Listar Veículos.");
-                Console.WriteLine("[8] - Listar Veículos.");
+                Console.WriteLine("[3] - Cadastrar Veículos Leves.");
+                Console.WriteLine("[4] - Listar Veículos Leves.");
+                Console.WriteLine("[5] - Cadastrar Veículos Pesados.");
+                Console.WriteLine("[6] - Listar Veículos Pesados.");
+                Console.WriteLine("[7] - Cadastrar Locações.");
+                Console.WriteLine("[8] - Listar Locações.");
                 Console.WriteLine("[0] - Sair.");
                 Console.WriteLine("*************************************");
                 op = Convert.ToInt32(Console.ReadLine());
@@ -39,27 +39,30 @@ namespace ExercicioCliente
                             View.Cliente.ListaCliente();
                             break;
                         }
-                        // // case 3: {
-                        // //     Model.VeiculoPesado.CriarVeiculoPesado();
-                        // //     break;
-                        // // }
-                        // // case 4: {
-                        // //     Model.VeiculoPesado.ListarVeiculoPesado();
-                        // //     break;
-                        // // }
-                        // case 5: {
-                            
-                        //     break;
-                        // } 
-                        // case 6: {
-                        //     break;
-                        // }
-                        // case 7: {
-                        //     break;
-                        // }
-                        // case 8: {
-                        //     break;
-                        // }
+                        case 3: {
+                            View.VeiculoLeve.CriarVeiculoLeve();
+                            break;
+                        }
+                        case 4: {
+                            View.VeiculoLeve.ListaVeiculosLeves();
+                            break;
+                        }
+                        case 5: {
+                            View.VeiculoPesado.CriarVeiculoPesado();
+                            break;
+                        } 
+                        case 6: {
+                            View.VeiculoPesado.ListaVeiculosPesados();
+                            break;
+                        }
+                        case 7: {
+                            View.Locacao.CriarLocacao();
+                            break;
+                        }
+                        case 8: {
+                            View.Locacao.ListarLocacoes();
+                            break;
+                        }
                     default:
                         {
                             Console.WriteLine("Opção inválida!");
