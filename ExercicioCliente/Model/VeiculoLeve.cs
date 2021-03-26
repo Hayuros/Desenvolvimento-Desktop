@@ -8,7 +8,7 @@ namespace Model
     public class VeiculoLeve : Veiculo
     {
         public int Id { set; get; }
-        public string Cor { set; get;}
+        public string Cor { set; get; }
 
         public VeiculoLeve(
             string Marca,
@@ -17,18 +17,19 @@ namespace Model
             double Preco,
             string Cor
         ) : base(Marca, Modelo, Ano, Preco)
-        { 
-            this.Id = Context.veiculosLeves.Count;
+        {
             this.Cor = Cor;
 
-            Context.veiculosLeves.Add(this);
+            Context DB = new Context();
+            DB.veiculosLeves.Add(this);
+            DB.SaveChanges();
         }
 
         public override string ToString()
         {
-            return "\nId: "+this.Id+
-                    "\n" + base.ToString()+
-                    "\n Cor: "+this.Cor;
+            return "\nId: " + this.Id +
+                    "\n" + base.ToString() +
+                    "\nCor: " + this.Cor;
         }
 
         public override bool Equals(object obj)
@@ -41,29 +42,34 @@ namespace Model
             {
                 return false;
             }
-            VeiculoLeve veiculoLeve = (VeiculoLeve) obj;
+            VeiculoLeve veiculoLeve = (VeiculoLeve)obj;
             return this.GetHashCode() == veiculoLeve.GetHashCode();
         }
-        
+
         public override int GetHashCode()
         {
-           return HashCode.Combine(this.Id);
+            return HashCode.Combine(this.Id);
         }
 
-        public static IEnumerable<Model.VeiculoLeve> GetVeiculoLeve() {
-            return from VeiculoLeve in Context.veiculosLeves select VeiculoLeve;
+        public static IEnumerable<Model.VeiculoLeve> GetVeiculoLeve()
+        {
+            Context DB = new Context();
+            return from VeiculoLeve in DB.veiculosLeves select VeiculoLeve;
         }
 
-        public static int GetCount() {
+        public static int GetCount()
+        {
             return GetVeiculoLeve().Count();
         }
 
-        public static VeiculoLeve GetVeiculoLeve(int Id) {
+        public static VeiculoLeve GetVeiculoLeve(int Id)
+        {
+            Context DB = new Context();
             return (
-                from VeiculoLeve in Context.veiculosLeves
+                from VeiculoLeve in DB.veiculosLeves
                 where VeiculoLeve.Id == Id
                 select VeiculoLeve
             ).First();
         }
-    } 
+    }
 }

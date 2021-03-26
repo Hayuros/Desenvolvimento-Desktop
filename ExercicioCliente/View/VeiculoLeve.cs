@@ -5,7 +5,8 @@ namespace View
 {
     public class VeiculoLeve
     {
-        public static void CriarVeiculoLeve() {
+        public static void CriarVeiculoLeve()
+        {
             Console.WriteLine("Digite a Marca do Veículo");
             string Marca = Console.ReadLine();
             Console.WriteLine("Digite o Modelo do Veículo");
@@ -20,8 +21,12 @@ namespace View
             Controller.VeiculoLeve.CriarVeiculoLeve(Marca, Modelo, Ano, Preco, Cor);
         }
 
-        public static void ListaVeiculosLeves() {
-            foreach (Model.VeiculoLeve veiculo in Controller.VeiculoLeve.GetVeiculoLeve())
+        public static void ListaVeiculosLeves()
+        {
+            Console.WriteLine("*************************************");
+            Console.WriteLine("\nListagem de Veiculos Leves");
+            Console.WriteLine("*************************************");
+            foreach (Model.VeiculoLeve veiculo in Controller.VeiculoLeve.ListaVeiculoLeve())
             {
                 Console.WriteLine("===========================");
                 Console.WriteLine(veiculo);

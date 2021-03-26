@@ -5,7 +5,8 @@ namespace View
 {
     public class Locacao
     {
-        public static void CriarLocacao() {
+        public static void CriarLocacao()
+        {
             int opc;
             int opcLeve;
             int opcPesado;
@@ -43,7 +44,7 @@ namespace View
                     opcLeve = Convert.ToInt32(Console.ReadLine());
                 } while (opcLeve == 1);
             }
-            
+
             Console.WriteLine("Foram locados Veículos Pesados?");
             Console.WriteLine("[1] - Sim.");
             opc = Convert.ToInt32(Console.ReadLine());
@@ -70,7 +71,7 @@ namespace View
 
             try
             {
-                Controller.Locacao.CriarLocacao(IdCliente, DataLocacao, veiculosLeves, VeiculosPesados);
+                Controller.Locacao.CriarLocacao(IdCliente, DataLocacao, VeiculosLeves, VeiculosPesados);
             }
             catch (Exception e)
             {
@@ -78,7 +79,8 @@ namespace View
             }
         }
 
-        public static void ListarLocacoes() {
+        public static void ListarLocacoes()
+        {
             foreach (Model.Locacao locacao in Controller.Locacao.GetLocacoes())
             {
                 Console.WriteLine("===================================");
@@ -86,5 +88,5 @@ namespace View
             }
             Console.WriteLine("===================================");
         }
-    }   
+    }
 }

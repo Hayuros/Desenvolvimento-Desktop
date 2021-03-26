@@ -2,7 +2,7 @@
 
 namespace ExercicioCliente
 {
-   public class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
@@ -20,15 +20,17 @@ namespace ExercicioCliente
                 Console.WriteLine("[6] - Listar Veículos Pesados.");
                 Console.WriteLine("[7] - Cadastrar Locações.");
                 Console.WriteLine("[8] - Listar Locações.");
+                Console.WriteLine("[9] - Importar Dados.");
                 Console.WriteLine("[0] - Sair.");
                 Console.WriteLine("*************************************");
                 op = Convert.ToInt32(Console.ReadLine());
                 switch (op)
                 {
-                    case 0: {
-                        Console.WriteLine("Até mais!");
-                        break;
-                    }
+                    case 0:
+                        {
+                            Console.WriteLine("Até mais!");
+                            break;
+                        }
                     case 1:
                         {
                             View.Cliente.CriarCliente();
@@ -39,28 +41,39 @@ namespace ExercicioCliente
                             View.Cliente.ListaCliente();
                             break;
                         }
-                        case 3: {
+                    case 3:
+                        {
                             View.VeiculoLeve.CriarVeiculoLeve();
                             break;
                         }
-                        case 4: {
+                    case 4:
+                        {
                             View.VeiculoLeve.ListaVeiculosLeves();
                             break;
                         }
-                        case 5: {
+                    case 5:
+                        {
                             View.VeiculoPesado.CriarVeiculoPesado();
                             break;
-                        } 
-                        case 6: {
+                        }
+                    case 6:
+                        {
                             View.VeiculoPesado.ListaVeiculosPesados();
                             break;
                         }
-                        case 7: {
+                    case 7:
+                        {
                             View.Locacao.CriarLocacao();
                             break;
                         }
-                        case 8: {
+                    case 8:
+                        {
                             View.Locacao.ListarLocacoes();
+                            break;
+                        }
+                    case 9:
+                        {
+                            View.Import.DBImport();
                             break;
                         }
                     default:
