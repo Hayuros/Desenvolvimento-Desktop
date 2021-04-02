@@ -88,5 +88,53 @@ namespace View
             }
             Console.WriteLine("===================================");
         }
+
+        public static void AtualizarLocacao(){
+            Console.WriteLine("*************************************");
+            Console.WriteLine("\nAtualização de Locações");
+            Console.WriteLine("*************************************");
+           Model.Locacao locacao;
+           try
+           {
+               Console.WriteLine("\nDigite o Id da Locação: ");
+               string Id = Console.ReadLine();
+               locacao = Controller.Locacao.GetLocacao(Id);
+           }
+           catch (Exception e)
+           {
+               Console.WriteLine(e.Message);
+               return;
+           }
+           Console.WriteLine("Digite o Campo para Alteração");
+           Console.WriteLine("[1] - CLiente");
+           Console.WriteLine("[2] - Veículo Leve");
+           Console.WriteLine("[3] - Veículo Pesado");
+           string campo = Console.ReadLine();
+
+           Console.WriteLine("Digite o Valor de Alteração");
+           string valor = Console.ReadLine();
+
+           try
+           {
+               Controller.Locacao.AtualizarLocacao(locacao, campo, valor);
+           }
+           catch (Exception e) 
+           {
+               Console.WriteLine(e.Message);
+           }
+        }
+
+        public static void ExcluirLocacao() {
+            try
+            {
+                Console.WriteLine("Digite o Id da Locação");
+                string Id = Console.ReadLine();
+                Controller.Locacao.ExcluirLocacao();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 }

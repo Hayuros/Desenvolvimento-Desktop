@@ -92,5 +92,39 @@ namespace Model
             return query.First();
 
         }
+
+        public static Cliente AtualizarCliente(
+            Cliente cliente,
+            int campo,
+            string valor
+        ) {
+            switch (campo)
+            {
+                case 1: {
+                    cliente.Nome = valor;
+                    break;
+                }
+                case 2: {
+                    cliente.Identificacao = valor;
+                    break;
+                }
+                default: {
+                    Console.WriteLine("Campo digitado não existente/não possível de auterações.");
+                    break;
+                }
+                Context DB = new Context();
+                DB.clientes.Update(cliente);
+                DB.SaveChanges();
+                return cliente;
+            } 
+        }
+
+        public static Cliente ExcluirCliente(int id) {
+            Cliente cliente = GetCliente(id);
+            Context DB = new Context();
+            DB.clientes.Remove(cliente);
+            DB.SaveChanges();
+            return cliente;
+        }
     } //Término da classe cliente.
 }

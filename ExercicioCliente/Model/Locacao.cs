@@ -135,5 +135,43 @@ namespace Model
             Context DB = new Context();
             return (from Locacao in DB.locacoes where Locacao.IdCliente == IdCliente select Locacao).Count();
         }
+
+        public static Locacao AtualizarLocacao(
+            Locacao locacao,
+            int campo,
+            string valor
+        ) {
+            switch (campo)
+            {
+                case 1: {
+                    Locacao.IdCliente = valor;
+                    break;
+                }
+                case 2: {
+                    Locacao.VeiculoLeve = valor;
+                    break;
+                }
+                case 3: {
+                    Locacao.VeiculoPesado = valor;
+                    break;
+                }
+                default: {
+                    Console.WriteLine("Campo digitado não existente/não possível de auterações.");
+                    break;
+                }
+                Context DB = new Context();
+                DB.locacoes.Update(Locacao);
+                DB.SaveChanges();
+                return locacao;
+            } 
+        }
+
+        public static Locacao ExcluirLocacao(int id) {
+            Locacao locacao = GetLocacao(id);
+            Context DB = new Context();
+            DB.locacoes.Remove(Locacao);
+            DB.SaveChanges();
+            return locacao;
+        }
     }//Término da classe Locação.
 }

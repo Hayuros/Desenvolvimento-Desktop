@@ -33,5 +33,55 @@ namespace View
             }
             Console.WriteLine("===========================");
         }
+
+        public static void AtualizarVeiculoPesado() {
+            Console.WriteLine("*************************************");
+            Console.WriteLine("\nAtualização de Veiculos Pesados");
+            Console.WriteLine("*************************************");
+           Model.VeiculoPesado VeiculoPesado;
+           try
+           {
+               Console.WriteLine("\nDigite o Id do Veiculo Pesado: ");
+               string id = Console.ReadLine();
+               VeiculoPesado = Controller.VeiculoPesado.GetVeiculoPesado(id);
+           }
+           catch (Exception e)
+           {
+               Console.WriteLine(e.Message);
+               return;
+           }
+           Console.WriteLine("Digite o Campo para Alteração");
+           Console.WriteLine("[1] - Marca do Veículo");
+           Console.WriteLine("[2] - Modelo do Veículo");
+           Console.WriteLine("[3] - Ano do Veículo");
+           Console.WriteLine("[4] - Preço do Veículo");
+           Console.WriteLine("[5] - Restrições do Veículo");
+           string campo = Console.ReadLine();
+
+           Console.WriteLine("Digite o Valor de Alteração");
+           string valor = Console.ReadLine();
+
+           try
+           {
+               Controller.VeiculoPesado.AtualizarVeiculoPesado(VeiculoPesado, campo, valor);
+           }
+           catch (Exception e) 
+           {
+               Console.WriteLine(e.Message);
+           }
+        }
+
+        public static void ExcluirVeiculoPesado() {
+            try
+            {
+                Console.WriteLine("Digite o Id do VeiculoPesado");
+                string Id = Console.ReadLine();
+                Controller.VeiculoPesado.ExcluirVeiculoPesado();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 }

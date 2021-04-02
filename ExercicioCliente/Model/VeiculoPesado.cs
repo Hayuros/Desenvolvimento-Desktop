@@ -71,5 +71,51 @@ namespace Model
                 select VeiculoPesado
             ).First();
         }
+
+         public static VeiculoPesado AtualizarVeiculoPesado(
+            VeiculoPesado veiculoPesado,
+            int campo,
+            string valor
+        ) {
+            switch (campo)
+            {
+                case 1: {
+                    VeiculoPesado.Marca = valor;
+                    break;
+                }
+                case 2: {
+                    VeiculoPesado.Modelo = valor;
+                    break;
+                }
+                case 3: {
+                    VeiculoPesado.Ano = valor;
+                    break;
+                }
+                case 4: {
+                    VeiculoPesado.Preco = valor;
+                    break;
+                }
+                case 5: {
+                    veiculoPesado.Restricoes = valor;
+                    break;
+                }
+                default: {
+                    Console.WriteLine("Campo digitado não existente/não possível de auterações.");
+                    break;
+                }
+                Context DB = new Context();
+                DB.veiculosPesados.Update(VeiculoPesado);
+                DB.SaveChanges();
+                return VeiculoPesado;
+            } 
+        }
+
+        public static VeiculoPesado ExcluirVeiculoPesado(int id) {
+            VeiculoPesado veiculoPesado = GetVeiculoPesado(id);
+            Context DB = new Context();
+            DB.veiculosPesados.Remove(VeiculoPesado);
+            DB.SaveChanges();
+            return VeiculoPesado;
+        }
     }
 }

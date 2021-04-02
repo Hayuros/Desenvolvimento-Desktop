@@ -5411,19 +5411,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hayuros\\.nuget\\packages\\": {}
+    "/home/hayuros/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hayuros\\Documents\\desktop\\Desenvolvimento-Desktop\\ExercicioCliente\\ExercicioCliente.csproj",
+      "projectUniqueName": "/home/hayuros/Documentos/Desenvolvimento-Desktop/ExercicioCliente/ExercicioCliente.csproj",
       "projectName": "ExercicioCliente",
-      "projectPath": "C:\\Users\\Hayuros\\Documents\\desktop\\Desenvolvimento-Desktop\\ExercicioCliente\\ExercicioCliente.csproj",
-      "packagesPath": "C:\\Users\\Hayuros\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hayuros\\Documents\\desktop\\Desenvolvimento-Desktop\\ExercicioCliente\\obj\\",
+      "projectPath": "/home/hayuros/Documentos/Desenvolvimento-Desktop/ExercicioCliente/ExercicioCliente.csproj",
+      "packagesPath": "/home/hayuros/.nuget/packages/",
+      "outputPath": "/home/hayuros/Documentos/Desenvolvimento-Desktop/ExercicioCliente/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Hayuros\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/hayuros/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -5479,7 +5479,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.407/RuntimeIdentifierGraph.json"
       }
     }
   }

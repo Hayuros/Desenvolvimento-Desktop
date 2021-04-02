@@ -51,5 +51,48 @@ namespace Controller
 
             return Model.VeiculoLeve.GetVeiculoLeve(Id);
         }
+
+
+        public static Model.VeiculoLeve AtualizarVeiculoLeve(
+            Model.VeiculoLeve veiculoLeve,
+            string opcao,
+            string valor
+        ) {
+            int campo = Convert.ToInt32(opcao);
+            switch (campo)
+            {
+                case 1: {
+                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
+                }
+                case 2: {
+                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
+                }
+                case 3: {
+                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
+                }
+                case 4: {
+                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
+                }
+                case 5: {
+                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
+                }
+                default: {
+                    throw new Exception("Operação Inválida");
+
+                }
+            }
+        }
+
+        public static void ExcluirVeiculoLeve(string StringId) {
+            int Id = Convert.ToInt32(StringId);
+            try
+            {
+                Model.VeiculoLeve.ExcluirVeiculoLeve(Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Está exclusão não foi permitida/Id Inválido." +e.Message);
+            }
+        }
     }
 }
