@@ -5416,11 +5416,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/hayuros/Documentos/Desenvolvimento-Desktop/ExercicioCliente/ExercicioCliente.csproj",
-      "projectName": "ExercicioCliente",
-      "projectPath": "/home/hayuros/Documentos/Desenvolvimento-Desktop/ExercicioCliente/ExercicioCliente.csproj",
+      "projectUniqueName": "/home/hayuros/Documentos/Desenvolvimento-Desktop/AtividadeLocadora/AtividadeLocadora.csproj",
+      "projectName": "AtividadeLocadora",
+      "projectPath": "/home/hayuros/Documentos/Desenvolvimento-Desktop/AtividadeLocadora/AtividadeLocadora.csproj",
       "packagesPath": "/home/hayuros/.nuget/packages/",
-      "outputPath": "/home/hayuros/Documentos/Desenvolvimento-Desktop/ExercicioCliente/obj/",
+      "outputPath": "/home/hayuros/Documentos/Desenvolvimento-Desktop/AtividadeLocadora/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/hayuros/.nuget/NuGet/NuGet.Config"
