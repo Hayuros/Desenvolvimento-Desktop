@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mFE1UjQqB/tx6kVhaj157a3NGVvjpkcWKg9WLXnnAOdhQ0gBWE+vc5A9rskl94E4b72zDA7JM8ajfXkrynrl9Q==",
+  "dgSpecHash": "+oHXPV10vfW8sbXd0o/rjvyY88jQypR+gfJtedu7smHiTxXuF2jxF8L6o0fOrbLs72bnjXPq33NQzdtEDIKB4Q==",
   "success": true,
-  "projectFilePath": "/home/hayuros/Documentos/Desenvolvimento-Desktop/AtividadeLocadora/AtividadeLocadora.csproj",
+  "projectFilePath": "/home/hayuros/Documentos/Desenvolvimento-Desktop/AtividadeLocadoraDesktop/AtividadeLocadoraDesktop.csproj",
   "expectedPackageFiles": [
     "/home/hayuros/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/home/hayuros/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
