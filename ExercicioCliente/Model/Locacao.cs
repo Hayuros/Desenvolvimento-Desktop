@@ -7,20 +7,25 @@ namespace Model
 {
     public class Locacao
     {
-        public int Id {set; get;}
-        public int IdCliente {set; get;}
-        public Cliente Cliente {set; get;}
-        public DateTime DataLocacao {set; get;}
+        public int Id { set; get; }
+        public int IdCliente { set; get; }
+        public Cliente Cliente { set; get; }
+        public DateTime DataLocacao { set; get; }
 
+        public Locacao()
+        {
+
+        }
         public Locacao(Cliente cliente,
             DateTime DataLocacao,
             List<VeiculoLeve> VeiculosLeves,
             List<VeiculoPesado> VeiculosPesados
-        ) {
-            this.Id =Id;
-            this.IdCliente =IdCliente;
-            this.Cliente =Cliente;
-            this.DataLocacao =DataLocacao; 
+        )
+        {
+            this.Id = Id;
+            this.IdCliente = IdCliente;
+            this.Cliente = Cliente;
+            this.DataLocacao = DataLocacao;
 
             foreach (VeiculoLeve veiculo in VeiculosLeves)
             {
@@ -32,10 +37,13 @@ namespace Model
                 LocacaoVeiculoPesado locacaoVeiculoPesado = new LocacaoVeiculoPesado(this, veiculo);
             }
 
-            Context.locacoes.Add(this);
+            Context DB = new Context();
+            DB.locacoes.Add(this);
+            DB.SaveChanges();
         }
 
-        public double GetValorLocacao() {
+        public double GetValorLocacao()
+        {
             double total = 0;
 
             foreach (LocacaoVeiculoLeve veiculo in LocacaoVeiculoLeve.GetVeiculos(this.Id))
@@ -48,7 +56,8 @@ namespace Model
             return total;
         }
 
-        public DateTime GetDataRetorno() {
+        public DateTime GetDataRetorno()
+        {
             int DiasRetorno = this.Cliente.DiasRetorno;
 
             return this.DataLocacao.AddDays(DiasRetorno);
@@ -56,7 +65,7 @@ namespace Model
 
         public override string ToString()
         {
-            string Print = String.Format (
+            string Print = String.Format(
                 "Data da Locação: {0:d}\nData de Decolução: {1:d}\nValor: {2:c}\nCliente: {3}",
                 this.DataLocacao,
                 this.GetDataRetorno(),
@@ -70,10 +79,12 @@ namespace Model
             {
                 foreach (LocacaoVeiculoLeve veiculo in LocacaoVeiculoLeve.GetVeiculos(this.Id))
                 {
-                    Print += "\n "+veiculo.veiculoLeve;
+                    Print += "\n " + veiculo.veiculoLeve;
                 }
-            } else {
-                Print += "\n Não Consta nada.";  
+            }
+            else
+            {
+                Print += "\n Não Consta nada.";
             }
 
             //Printando na tela os veículos pesados locados.
@@ -82,10 +93,12 @@ namespace Model
             {
                 foreach (LocacaoVeiculoPesado veiculo in LocacaoVeiculoPesado.GetVeiculos(this.Id))
                 {
-                    Print += "\n "+veiculo.veiculoPesado;
+                    Print += "\n " + veiculo.veiculoPesado;
                 }
-            }  else {
-                Print += "\n Não Consta nada.";  
+            }
+            else
+            {
+                Print += "\n Não Consta nada.";
             }
 
             return Print;
@@ -101,22 +114,64 @@ namespace Model
             {
                 return false;
             }
-            Locacao locacao = (Locacao) obj;
+            Locacao locacao = (Locacao)obj;
             return this.GetHashCode() == locacao.GetHashCode();
-            
+
         }
-        
+
         public override int GetHashCode()
         {
             return HashCode.Combine(this.Id);
         }
 
-        public static IEnumerable<Locacao> GetLocacoes() {
-            return from Locacao in Context.locacoes select Locacao;
+        public static IEnumerable<Locacao> GetLocacoes()
+        {
+            Context DB = new Context();
+            return from Locacao in DB.locacoes select Locacao;
         }
 
-        public static int GetCount(int IdCliente) {
-            return (from Locacao in Context.locacoes where Locacao.IdCliente == IdCliente select Locacao).Count();
+        public static int GetCount(int IdCliente)
+        {
+            Context DB = new Context();
+            return (from Locacao in DB.locacoes where Locacao.IdCliente == IdCliente select Locacao).Count();
+        }
+
+        public static Locacao AtualizarLocacao(
+            Locacao locacao,
+            int campo,
+            string valor
+        ) {
+            switch (campo)
+            {
+                case 1: {
+                    Locacao.IdCliente = valor;
+                    break;
+                }
+                case 2: {
+                    Locacao.VeiculoLeve = valor;
+                    break;
+                }
+                case 3: {
+                    Locacao.VeiculoPesado = valor;
+                    break;
+                }
+                default: {
+                    Console.WriteLine("Campo digitado não existente/não possível de auterações.");
+                    break;
+                }
+                Context DB = new Context();
+                DB.locacoes.Update(Locacao);
+                DB.SaveChanges();
+                return locacao;
+            } 
+        }
+
+        public static Locacao ExcluirLocacao(int id) {
+            Locacao locacao = GetLocacao(id);
+            Context DB = new Context();
+            DB.locacoes.Remove(Locacao);
+            DB.SaveChanges();
+            return locacao;
         }
     }//Término da classe Locação.
 }

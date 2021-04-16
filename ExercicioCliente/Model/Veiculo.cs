@@ -22,10 +22,10 @@ namespace Model
 
         public override string ToString()
         {
-            return "Marca:" + this.Marca +
-            "Modelo:" + this.Modelo +
-            "Ano:" + this.Ano + 
-            "Preço:" + String.Format("{0:c}", this.Preco);
+            return "\nMarca:" + this.Marca +
+            "\nModelo:" + this.Modelo +
+            "\nAno:" + this.Ano +
+            "\nPreço:" + String.Format("{0:c}", this.Preco);
         }
     }
 }
