@@ -5,6 +5,19 @@ using System.Drawing;
 namespace View
 {
     namespace Biblio {
+        class BiblioButton : Button{
+            public BiblioButton(
+                string Text,
+                Point Location,
+                Size Size,
+                Font Font
+            ) {
+                this.Text = Text;
+                this.Location = Location;
+                this.Size = Size;
+                this.Font = new Font(FontFamily.GenericSansSerif, 08.5F, FontStyle.Bold);
+            }
+        }
         class BiblioButtonCadastra : Button{
             public BiblioButtonCadastra(
                 string Text,

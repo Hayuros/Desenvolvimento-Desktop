@@ -5,47 +5,52 @@ using TelaCLiente;
 using TelaLocacao;
 using TelaVeiculoLeve;
 using TelaVeiculoPesado;
+using View.Biblio;
 
 namespace ExercicioCliente
 {
     public class Program : Form
     {
-        Button btnCadastrarCliente;
-        Button btnCadastraLocacao;
-        Button btnCadastraVeiculoLeve;
-        Button btnCadastraVeiculoPesado;
+        BiblioButton btnCadastrarCliente;
+        BiblioButton btnCadastraLocacao;
+        BiblioButton btnCadastraVeiculoLeve;
+        BiblioButton btnCadastraVeiculoPesado;
         public static void Main() {
             Application.EnableVisualStyles();
             Application.Run(new Program());
         }
         public Program()
         {
-            btnCadastrarCliente = new Button() {
+            btnCadastrarCliente = new BiblioButton(
                 Text = "Cadastrar Cliente",
                 Location = new Point(30, 10),
-                Size = new Size(75, 30)
-            };
+                Size = new Size(75, 30),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCadastrarCliente.Click += new EventHandler(this.btnCadastrarClienteClick);
 
-            btnCadastraLocacao = new Button() {
+            btnCadastraLocacao = new BiblioButton(
                 Text = "Cadastrar Locação",
                 Location = new Point(30, 50),
-                Size = new Size(75, 30)
-            };
+                Size = new Size(75, 30),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCadastraLocacao.Click += new EventHandler(this.btnCadastraLocacaoClick);
 
-            btnCadastraVeiculoLeve = new Button() {
+            btnCadastraVeiculoLeve = new BiblioButton(
                 Text = "Cadastrar Veículo Leve",
                 Location = new Point(20, 90),
-                Size = new Size(100, 30)
-            };
+                Size = new Size(100, 30),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCadastraVeiculoLeve.Click += new EventHandler(this.btnCadastraVeiculoLeveCLick);
 
-            btnCadastraVeiculoPesado = new Button() {
+            btnCadastraVeiculoPesado = new BiblioButton(
                 Text = "Cadastrar Veículo Pesado",
                 Location = new Point(20, 130),
-                Size = new Size(105, 30)
-            };
+                Size = new Size(105, 30),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCadastraVeiculoPesado.Click += new EventHandler(this.btnCadastraVeiculoPesadoClick);
 
             this.Controls.Add(btnCadastrarCliente);
