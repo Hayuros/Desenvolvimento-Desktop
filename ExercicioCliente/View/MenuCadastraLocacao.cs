@@ -1,77 +1,85 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing; 
+using View.Biblio;
 
 namespace TelaLocacao {
     public class MenuCadastraLocacao : Form {
-        Button btnCadastra;
-        Button btnCancela;
+        BiblioButtonCadastra btnCadastra;
+        BiblioButtonCancela btnCancela;
 
-        Label lbIdCLiente;
-        Label lbDataLocacao;
-        Label lbIdVeiculoLeve;
-        Label lbIdVeiculoPesado;
+        BiblioLabel lbIdCLiente;
+        BiblioLabel lbDataLocacao;
+        BiblioLabel lbIdVeiculoLeve;
+        BiblioLabel lbIdVeiculoPesado;
 
-        TextBox tbDataLocacao;
+        BiblioTextBox tbDataLocacao;
 
-        ComboBox cbIdCLiente;
-        ComboBox cbIdVeiculoLeve;
-        ComboBox cbIdVeiculoPesado;
+        BiblioComboBox cbIdCLiente;
+        BiblioComboBox cbIdVeiculoLeve;
+        BiblioComboBox cbIdVeiculoPesado;
 
         public MenuCadastraLocacao() {
-            btnCadastra = new Button() {
-                Text = "Cadastrar!",
+            btnCadastra = new BiblioButtonCadastra(
+                Text = this.Text,
                 Location = new Point(25, 125),
-                BackColor = System.Drawing.Color.Green
-            };
+                BackColor = this.BackColor,
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCadastra.Click += new EventHandler(btnCadastraClick);
-            btnCancela = new Button() {
-                Text = "Cancelar!",
+            
+            btnCancela = new BiblioButtonCancela(
+                Text = this.Text,
                 Location = new Point(110, 125),
-                BackColor = System.Drawing.Color.Red
-            };
+                BackColor = this.BackColor,
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCancela.Click += new EventHandler(btnCancelaClick);
 
             
-            lbIdCLiente = new Label() {
+            lbIdCLiente = new BiblioLabel(
                 Text = "Id Cliente", 
-                Location = new Point(5, 25)
-            };
-            lbIdVeiculoLeve = new Label() {
+                Location = new Point(5, 25),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbIdVeiculoLeve = new BiblioLabel(
                 Text = "Id Veículo Leve",
-                Location = new Point(5, 50)
-            };
-            lbIdVeiculoPesado = new Label() {
+                Location = new Point(5, 50),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbIdVeiculoPesado = new BiblioLabel(
                 Text = "Id Veículo Pesado",
-                Location = new Point(5, 75)
-            };
-            lbDataLocacao = new Label() {
+                Location = new Point(5, 75),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbDataLocacao = new BiblioLabel(
                 Text = "Data de Locação",
-                Location = new Point(5, 100)
-            };
+                Location = new Point(5, 100),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
 
-            tbDataLocacao = new TextBox() {
+            tbDataLocacao = new BiblioTextBox(
                 Location = new Point(110, 100),
                 Size = new Size(100, 15)
-            };
+            );
 
 
-            cbIdCLiente = new ComboBox() {
+            cbIdCLiente = new BiblioComboBox(
                 Location = new Point(110, 25),
                 Size = new Size(100, 10)
-            };
+            );
             cbIdCLiente.Items.AddRange(new string[]{"1", "2", "3", "4"});
 
-            cbIdVeiculoLeve = new ComboBox() {
+            cbIdVeiculoLeve = new BiblioComboBox(
                 Location = new Point(110, 50),
                 Size = new Size(100, 10)
-            };
+            );
             cbIdVeiculoLeve.Items.AddRange(new string[]{"1", "2", "3", "4"});
 
-            cbIdVeiculoPesado = new ComboBox() {
+            cbIdVeiculoPesado = new BiblioComboBox(
                 Location = new Point(110, 75),
                 Size = new Size(100, 10)
-            };
+            );
             cbIdVeiculoPesado.Items.AddRange(new string[]{"1", "2", "3", "4"});
 
 

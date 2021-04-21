@@ -1,80 +1,87 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using View.Biblio;
 
 namespace TelaVeiculoPesado
 {
     public class MenuCadastraVeiculoPesado : Form{
-        Button btnCadastra;
-        Button btnCancela;
+        BiblioButtonCadastra btnCadastra;
+        BiblioButtonCancela btnCancela;
         
-        Label lbMarca;
-        Label lbModelo;
-        Label lbAnoVeiculo;
-        Label lbPreco;
-        Label lbRestricoes;
+        BiblioLabel lbMarca;
+        BiblioLabel lbModelo;
+        BiblioLabel lbAnoVeiculo;
+        BiblioLabel lbPreco;
+        BiblioLabel lbRestricoes;
 
-        TextBox tbMarca;
-        TextBox tbModelo;
-        TextBox tbAnoVeiculo;
-        TextBox tbPreco;
-        TextBox tbRestricoes;
+        BiblioTextBox tbMarca;
+        BiblioTextBox tbModelo;
+        BiblioTextBox tbAnoVeiculo;
+        BiblioTextBox tbPreco;
+        BiblioTextBox tbRestricoes;
         public MenuCadastraVeiculoPesado() {           
-
-            btnCadastra = new Button() {
-                Text = "Cadastrar",
+            btnCadastra = new BiblioButtonCadastra(
+                Text = this.Text,
                 Location = new Point(30, 160),
-                BackColor = System.Drawing.Color.Green
-            };
+                BackColor = this.BackColor,
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCadastra.Click += new EventHandler(this.btnCadastraClick);
-            btnCancela = new Button() {
-                Text = "Cancelar",
+            btnCancela = new BiblioButtonCancela(
+                Text = this.Text,
                 Location = new Point(110 , 160),
-                BackColor = System.Drawing.Color.Red
-            };
+                BackColor = this.BackColor,
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCancela.Click += new EventHandler(this.btnCancelaClick);
             
-            lbMarca = new Label() {
+            lbMarca = new BiblioLabel(
                 Text = "Marca",
-                Location = new Point(5, 10)
-            };
-            lbModelo = new Label() {
+                Location = new Point(5, 10),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbModelo = new BiblioLabel(
                 Text = "Modelo",
-                Location = new Point(5, 40)
-            };
-            lbAnoVeiculo = new Label() {
+                Location = new Point(5, 40),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbAnoVeiculo = new BiblioLabel(
                 Text = "Ano do Veiculo",
-                Location = new Point(5, 70)
-            };
-            lbPreco = new Label() {
+                Location = new Point(5, 70),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbPreco = new BiblioLabel(
                 Text = "Preco",
-                Location = new Point(5,  100)
-            };
-            lbRestricoes = new Label() {
+                Location = new Point(5,  100),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbRestricoes = new BiblioLabel(
                 Text = "Restricoes",
-                Location = new Point(5, 130)
-            };
+                Location = new Point(5, 130),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
 
-            tbMarca = new TextBox() {
+            tbMarca = new BiblioTextBox(
                 Location = new Point(105, 10),
                 Size = new Size(100, 10)
-            };
-            tbModelo = new TextBox() {
+            );
+            tbModelo = new BiblioTextBox(
                 Location = new Point(105, 40),
                 Size = new Size(100, 10)
-            };
-            tbAnoVeiculo = new TextBox() {
+            );
+            tbAnoVeiculo = new BiblioTextBox(
                 Location = new Point(105, 70),
                 Size = new Size(100, 10)
-            };
-            tbPreco = new TextBox() {
+            );
+            tbPreco = new BiblioTextBox(
                 Location = new Point(105,  100),
                 Size = new Size(100, 10)
-            };
-            tbRestricoes = new TextBox() {
+            );
+            tbRestricoes = new BiblioTextBox(
                 Location = new Point(105, 130),
                 Size = new Size(100, 10)
-            };
+            );
 
 
             this.Controls.Add(btnCadastra);
