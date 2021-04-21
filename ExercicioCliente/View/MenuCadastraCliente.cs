@@ -1,105 +1,111 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing; 
+using View.Biblio;
 
 namespace TelaCLiente
 {
     public class MenuCadastraCLiente : Form{
 
-        Button btnCadastra;
-        Button btnCancela;
+        BiblioButtonCadastra btnCadastra;
+        BiblioButtonCancela btnCancela;
 
-        Label lbNome;
-        Label lbAniversario;
-        Label lbIdentificacao;
-        Label lbDiasRetorno;
+        BiblioLabel lbNome;
+        BiblioLabel lbAniversario;
+        BiblioLabel lbIdentificacao;
+        BiblioLabel lbDiasRetorno;
 
-        TextBox tbNome;
-        TextBox tbAniversario;
-        TextBox tbIdentificacao;
+        BiblioTextBox tbNome;
+        BiblioTextBox tbAniversario;
+        BiblioTextBox tbIdentificacao;
 
-        ComboBox cbDiasRetorno;
+        BiblioComboBox cbDiasRetorno;
 
-        GroupBox gbSexo;
+        BiblioGroupBox gbSexo;
 
-        RadioButton rbHomem;
-        RadioButton rbMulher;
-        RadioButton rbNaoInformado;
+        BiblioRadioButton rbHomem;
+        BiblioRadioButton rbMulher;
+        BiblioRadioButton rbNaoInformado;
 
         public MenuCadastraCLiente() {
-            btnCadastra = new Button() {
-                Text = "Cadastrar!",
+            btnCadastra = new BiblioButtonCadastra(
+                Text = this.Text,
                 Location = new Point(20, 240),
-                BackColor = System.Drawing.Color.Green
-            };
+                BackColor = this.BackColor,
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCadastra.Click += new EventHandler(this.btnCadastraClick);
             
-            btnCancela = new Button() {
-                Text = "Cancelar!",
+            btnCancela = new BiblioButtonCancela(
+                Text = this.Text,
                 Location = new Point(110, 240),
-                BackColor = System.Drawing.Color.Red
-            };
+                BackColor = this.BackColor,
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             btnCancela.Click += new EventHandler(this.btnCancelaClick);
 
 
-            lbNome = new Label() {
-                Text = "Nome",
-                Location = new Point(5, 15)
-            };
-            lbAniversario = new Label() {
-                Text = "Aniversario",
-                Location = new Point(5, 45)
-            };
-            lbIdentificacao = new Label() {
-                Text = "Identificação",
-                Location = new Point(5, 75)
-            };
-            lbDiasRetorno = new Label() {
-                Text = "DiasRetorno",
-                Location = new Point(5, 105)
-            };
+            lbNome = new BiblioLabel(Text = "Nome",
+                Location = new Point(5, 15),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbAniversario = new BiblioLabel(Text = "Aniversario",
+                Location = new Point(5, 45),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbIdentificacao = new BiblioLabel(Text = "Identificação",
+                Location = new Point(5, 75),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbDiasRetorno = new BiblioLabel(Text = "DiasRetorno",
+                Location = new Point(5, 105),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
             
 
-            tbNome = new TextBox() {
+            tbNome = new BiblioTextBox(
                 Location = new Point(105, 15),
                 Size = new Size(100, 10)
-            };
-            tbAniversario = new TextBox() {
+            );
+            tbAniversario = new BiblioTextBox(
                 Location = new Point(105, 45),
                 Size = new Size(100, 10)
-            };
-            tbIdentificacao = new TextBox() {
+            );
+            tbIdentificacao = new BiblioTextBox(
                 Location = new Point(105, 75),
                 Size = new Size(100, 10)
-            };
+            );
 
 
-            cbDiasRetorno = new ComboBox() {
+            cbDiasRetorno = new BiblioComboBox(
                 Location = new Point(105, 105),
                 Size = new Size(100, 10)
-            };      
+            );
             cbDiasRetorno.Items.AddRange(new string[] {"5", "10", "15", "20"});
 
 
-            gbSexo = new GroupBox() {
+            gbSexo = new BiblioGroupBox(
                 Text = "Sexo",
                 Location =  new Point(5, 135),
                 Size = new Size(200, 90)
-            };
+            );
 
 
-            rbHomem = new RadioButton() {
+            rbHomem = new BiblioRadioButton(
                 Text = "Homem",
-                Location = new Point(8, 15)
-            };
-            rbMulher = new RadioButton() {
+                Location = new Point(8, 15),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            rbMulher = new BiblioRadioButton(
                 Text = "Mulher",
-                Location = new Point(8, 35)
-            };
-            rbNaoInformado = new RadioButton() {
-                Text = "Nao Informado",
-                Location = new Point(8, 57)
-            };
+                Location = new Point(8, 35),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            rbNaoInformado = new BiblioRadioButton(
+                Text = "Nenhum",
+                Location = new Point(8, 57),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
 
 
             this.Controls.Add(btnCadastra );
