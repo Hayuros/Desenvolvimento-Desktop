@@ -20,6 +20,7 @@ namespace TelaVeiculoPesado
         BiblioTextBox tbAnoVeiculo;
         BiblioTextBox tbPreco;
         BiblioTextBox tbRestricoes;
+
         public MenuCadastraVeiculoPesado() {           
             btnCadastra = new BiblioButtonCadastra(
                 Text = this.Text,
@@ -57,7 +58,7 @@ namespace TelaVeiculoPesado
                 Font = new Font(this.Font, FontStyle.Bold)
             );
             lbRestricoes = new BiblioLabel(
-                Text = "Restricoes",
+                Text = "Restrições",
                 Location = new Point(5, 130),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
