@@ -3,9 +3,9 @@ using System.Windows.Forms;
 using System.Drawing; 
 using View.Biblio;
 
-namespace TelaCLiente
+namespace TelaCliente
 {
-    public class MenuCadastraCLiente : Form{
+    public class MenuCadastraCliente : Form{
 
         BiblioButtonCadastra btnCadastra;
         BiblioButtonCancela btnCancela;
@@ -17,17 +17,17 @@ namespace TelaCLiente
 
         BiblioTextBox tbNome;
         BiblioTextBox tbAniversario;
-        BiblioTextBox tbIdentificacao;
 
-        BiblioComboBox cbDiasRetorno;
+        BiblioMaskedTextBox mtbIdentificacao;
+
+        BiblioNumericUpDown nupDiasRetorno;
 
         BiblioGroupBox gbSexo;
-
         BiblioRadioButton rbHomem;
         BiblioRadioButton rbMulher;
         BiblioRadioButton rbNaoInformado;
 
-        public MenuCadastraCLiente() {
+        public MenuCadastraCliente() {
             btnCadastra = new BiblioButtonCadastra(
                 Text = this.Text,
                 Location = new Point(20, 240),
@@ -71,18 +71,27 @@ namespace TelaCLiente
                 Location = new Point(105, 45),
                 Size = new Size(100, 10)
             );
-            tbIdentificacao = new BiblioTextBox(
+
+
+            mtbIdentificacao = new BiblioMaskedTextBox(
                 Location = new Point(105, 75),
                 Size = new Size(100, 10)
-            );
+            ) {
+                Mask = "000.000.000-00"
+            };
 
 
-            cbDiasRetorno = new BiblioComboBox(
+            nupDiasRetorno = new BiblioNumericUpDown(
                 Location = new Point(105, 105),
-                Size = new Size(100, 10)
-            );
-            cbDiasRetorno.Items.AddRange(new string[] {"5", "10", "15", "20"});
-
+                Size = new Size(100, 10)               
+            ) {
+                Value = 5,
+                Maximum = 30,
+                Minimum = 5,
+                Increment = 5,
+                ReadOnly = true
+            };
+            
 
             gbSexo = new BiblioGroupBox(
                 Text = "Sexo",
@@ -116,8 +125,8 @@ namespace TelaCLiente
             this.Controls.Add(lbDiasRetorno);
             this.Controls.Add(tbNome);
             this.Controls.Add(tbAniversario);
-            this.Controls.Add(tbIdentificacao);
-            this.Controls.Add(cbDiasRetorno);
+            this.Controls.Add(mtbIdentificacao);
+            this.Controls.Add(nupDiasRetorno);
             this.Controls.Add(gbSexo);
             gbSexo.Controls.Add(rbHomem);
             gbSexo.Controls.Add(rbMulher);
@@ -128,7 +137,6 @@ namespace TelaCLiente
             Application.Run(this);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
-            // Application.Run(new Program());
             this.Close();
         }
         private void btnCadastraClick(object sender, EventArgs e) {

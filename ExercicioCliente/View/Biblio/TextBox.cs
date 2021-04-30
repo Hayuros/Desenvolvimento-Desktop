@@ -14,5 +14,15 @@ namespace View
                 this.Size = Size;
             }
         }
+
+        class BiblioMaskedTextBox : MaskedTextBox{
+            public BiblioMaskedTextBox(
+                Point Location,
+                Size Size
+            ) {
+                this.Location = Location;
+                this.Size = Size;
+            }
+        }
     }
 }
