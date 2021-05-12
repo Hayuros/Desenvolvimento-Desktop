@@ -17,9 +17,11 @@ namespace TelaVeiculoLeve
 
         BiblioTextBox tbMarca;
         BiblioTextBox tbModelo;
-        BiblioTextBox tbAnoVeiculo;
         BiblioTextBox tbPreco;
         BiblioTextBox tbCor;
+
+        DateTimePicker dtpAnoVeiculo;
+
         public MenuExcluiVeiculoLeve() {           
 
             btnExclui = new BiblioButtonExclui (
@@ -77,10 +79,6 @@ namespace TelaVeiculoLeve
                 Location = new Point(105, 40),
                 Size = new Size(100, 10)
             );
-            tbAnoVeiculo = new BiblioTextBox(
-                Location = new Point(105, 70),
-                Size = new Size(100, 10)
-            );
             tbPreco = new BiblioTextBox(
                 Location = new Point(105,  100),
                 Size = new Size(100, 10)
@@ -90,6 +88,14 @@ namespace TelaVeiculoLeve
                 Size = new Size(100, 10)
             );
 
+            dtpAnoVeiculo = new DateTimePicker() {
+                Location = new Point(105, 70),
+                Size = new Size(100, 10),
+                MaxDate = DateTime.Today,
+                MinDate = new DateTime(2005, 12, 31),
+                CustomFormat = "yyyy",
+                Format = DateTimePickerFormat.Custom
+            };
 
             this.Controls.Add(btnExclui);
             this.Controls.Add(btnCancela);
@@ -100,9 +106,9 @@ namespace TelaVeiculoLeve
             this.Controls.Add(lbCor);
             this.Controls.Add(tbMarca);
             this.Controls.Add(tbModelo);
-            this.Controls.Add(tbAnoVeiculo);
             this.Controls.Add(tbPreco);
-            this.Controls.Add(tbCor);
+            this.Controls.Add(tbCor); 
+            this.Controls.Add(dtpAnoVeiculo);
 
             this.Text = "Exclusão de Veículos Leves";
             this.Size = new Size(220, 220);
