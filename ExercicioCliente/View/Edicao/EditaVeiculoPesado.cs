@@ -17,9 +17,11 @@ namespace TelaVeiculoPesado
 
         BiblioTextBox tbMarca;
         BiblioTextBox tbModelo;
-        BiblioTextBox tbAnoVeiculo;
         BiblioTextBox tbPreco;
         BiblioTextBox tbRestricoes;
+
+        DateTimePicker dtpAnoVeiculo;
+
         public MenuEditaVeiculoPesado() {           
             btnEdita = new BiblioButtonEdita(
                 Text = this.Text,
@@ -70,10 +72,6 @@ namespace TelaVeiculoPesado
                 Location = new Point(105, 40),
                 Size = new Size(100, 10)
             );
-            tbAnoVeiculo = new BiblioTextBox(
-                Location = new Point(105, 70),
-                Size = new Size(100, 10)
-            );
             tbPreco = new BiblioTextBox(
                 Location = new Point(105,  100),
                 Size = new Size(100, 10)
@@ -83,6 +81,14 @@ namespace TelaVeiculoPesado
                 Size = new Size(100, 10)
             );
 
+            dtpAnoVeiculo = new DateTimePicker() {
+                Location = new Point(105, 70),
+                Size = new Size(100, 10),
+                MaxDate = DateTime.Today,
+                MinDate = new DateTime(2005, 12, 31),
+                CustomFormat = "yyyy",
+                Format = DateTimePickerFormat.Custom
+            };
 
             this.Controls.Add(btnEdita);
             this.Controls.Add(btnCancela);
@@ -93,10 +99,10 @@ namespace TelaVeiculoPesado
             this.Controls.Add(lbRestricoes);
             this.Controls.Add(tbMarca);
             this.Controls.Add(tbModelo);
-            this.Controls.Add(tbAnoVeiculo);
             this.Controls.Add(tbPreco);
             this.Controls.Add(tbRestricoes);
-
+            this.Controls.Add(dtpAnoVeiculo);
+            
             this.Text = "Edição de Veículos Pesados";
             this.Size = new Size(220, 220);
             Application.Run(this);

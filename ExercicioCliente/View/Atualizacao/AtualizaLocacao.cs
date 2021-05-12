@@ -13,7 +13,7 @@ namespace TelaLocacao {
         BiblioLabel lbIdVeiculoLeve;
         BiblioLabel lbIdVeiculoPesado;
 
-        BiblioTextBox tbDataLocacao;
+        MonthCalendar mcDataLocacao;
 
         BiblioComboBox cbIdCLiente;
         BiblioComboBox cbIdVeiculoLeve;
@@ -22,7 +22,7 @@ namespace TelaLocacao {
         public MenuAtualizaLocacao() {
             btnAtualiza = new BiblioButtonAtualiza(
                 Text = this.Text,
-                Location = new Point(25, 125),
+                Location = new Point(25, 275),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
@@ -30,7 +30,7 @@ namespace TelaLocacao {
             
             btnCancela = new BiblioButtonCancela(
                 Text = this.Text,
-                Location = new Point(110, 125),
+                Location = new Point(110, 275),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
@@ -56,12 +56,17 @@ namespace TelaLocacao {
                 Text = "Data de Locação",
                 Location = new Point(5, 100),
                 Font = new Font(this.Font, FontStyle.Bold)
-            );
+            ) {
+                Size = new Size(200, 15)
+            };
 
-            tbDataLocacao = new BiblioTextBox(
-                Location = new Point(110, 100),
-                Size = new Size(100, 15)
-            );
+
+            mcDataLocacao = new MonthCalendar() {
+                Location = new Point(5, 125),
+                MaxDate = new DateTime(2022, 12, 31),
+                MinDate = DateTime.Today,
+                ShowToday = true
+            };
 
 
             cbIdCLiente = new BiblioComboBox(
@@ -92,10 +97,10 @@ namespace TelaLocacao {
             this.Controls.Add(lbDataLocacao); 
             this.Controls.Add(cbIdVeiculoLeve);  
             this.Controls.Add(cbIdVeiculoPesado); 
-            this.Controls.Add(tbDataLocacao);   
+            this.Controls.Add(mcDataLocacao);   
 
             this.Text = "Atualização de Locações";
-            this.Size = new Size(220, 200);
+            this.Size = new Size(220, 350);
             Application.Run(this);
         }
 
