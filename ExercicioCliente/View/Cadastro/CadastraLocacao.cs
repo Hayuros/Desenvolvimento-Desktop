@@ -17,7 +17,7 @@ namespace TelaLocacao {
         BiblioComboBox cbIdVeiculoLeve;
         BiblioComboBox cbIdVeiculoPesado;
 
-        MonthCalendar mcDataLocacao;
+        BiblioMonthCalendar mcDataLocacao;
 
 
         public MenuCadastraLocacao() {
@@ -62,8 +62,9 @@ namespace TelaLocacao {
             };
 
 
-            mcDataLocacao = new MonthCalendar() {
-                Location = new Point(5, 125),
+            mcDataLocacao = new BiblioMonthCalendar(
+                Location = new Point(5, 125)
+            ) {
                 MaxDate = new DateTime(2022, 12, 31),
                 MinDate = DateTime.Today,
                 ShowToday = true

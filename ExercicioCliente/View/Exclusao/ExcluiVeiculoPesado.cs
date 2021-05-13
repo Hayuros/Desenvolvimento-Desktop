@@ -20,7 +20,7 @@ namespace TelaVeiculoPesado
         BiblioTextBox tbPreco;
         BiblioTextBox tbRestricoes;
 
-        DateTimePicker dtpAnoVeiculo;
+        BiblioDateTimePicker dtpAnoVeiculo;
 
         public MenuExcluiVeiculoPesado() {           
             btnExclui = new BiblioButtonExclui(
@@ -79,11 +79,12 @@ namespace TelaVeiculoPesado
             tbRestricoes = new BiblioTextBox(
                 Location = new Point(105, 130),
                 Size = new Size(100, 10)
-            );
-
-            dtpAnoVeiculo = new DateTimePicker() {
+            ); 
+            
+            dtpAnoVeiculo = new BiblioDateTimePicker(
                 Location = new Point(105, 70),
-                Size = new Size(100, 10),
+                Size = new Size(100, 10)                
+            ) {
                 MaxDate = DateTime.Today,
                 MinDate = new DateTime(2005, 12, 31),
                 CustomFormat = "yyyy",
