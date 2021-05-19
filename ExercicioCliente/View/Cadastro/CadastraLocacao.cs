@@ -5,25 +5,50 @@ using View.Biblio;
 
 namespace TelaLocacao {
     public class MenuCadastraLocacao : Form {
+        //Todas as Páginas
+        BiblioMonthCalendar mcDataLocacao;
+        BiblioTabPage tpVeiculoLeve;
+        BiblioTabPage tpVeiculoPesado;
+        BiblioTabPage tpCliente;
+        BiblioTabControl tcVeiculos;
         BiblioButtonCadastra btnCadastra;
         BiblioButtonCancela btnCancela;
 
+        //Página do Cliente
         BiblioLabel lbIdCLiente;
-        BiblioLabel lbIdVeiculoLeve;
-        BiblioLabel lbIdVeiculoPesado;
+        BiblioComboBox cbIdCLiente;
         BiblioLabel lbDataLocacao;
 
-        BiblioComboBox cbIdCLiente;
+        //Página do Veículo Leve
+        BiblioLabel lbIdVeiculoLeve;
+        BiblioLabel lbModeloVeiculoLeve;
+        BiblioLabel lbMarcaVeiculoLeve;
+        BiblioLabel lbPrecoVeiculoLeve;
+        BiblioLabel lbAnoVeiculoLeve;
+        BiblioTextBox tbModeloVeiculoLeve;
+        BiblioTextBox tbMarcaVeiculoLeve;
+        BiblioTextBox tbAnoVeiculoLeve;
+        BiblioMaskedTextBox mtbPrecoVeiculoLeve;
         BiblioComboBox cbIdVeiculoLeve;
+
+        //Página do Veículo Pesado
+        BiblioLabel lbIdVeiculoPesado;
+        BiblioLabel lbModeloVeiculoPesado;
+        BiblioLabel lbMarcaVeiculoPesado;
+        BiblioLabel lbPrecoVeiculoPesado;
+        BiblioLabel lbAnoVeiculoPesado;
+        BiblioTextBox tbModeloVeiculoPesado;
+        BiblioTextBox tbMarcaVeiculoPesado;
+        BiblioTextBox tbAnoVeiculoPesado;
+        BiblioMaskedTextBox mtbPrecoVeiculoPesado;
         BiblioComboBox cbIdVeiculoPesado;
 
-        BiblioMonthCalendar mcDataLocacao;
-
-
+       
         public MenuCadastraLocacao() {
+            //Todas as Páginas
             btnCadastra = new BiblioButtonCadastra(
                 Text = this.Text,
-                Location = new Point(25, 275),
+                Location = new Point(25, 200),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
@@ -31,75 +56,200 @@ namespace TelaLocacao {
             
             btnCancela = new BiblioButtonCancela(
                 Text = this.Text,
-                Location = new Point(110, 275),
+                Location = new Point(110, 200),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
             btnCancela.Click += new EventHandler(btnCancelaClick);
 
+            tcVeiculos = new BiblioTabControl(
+                Text = "Veículos",
+                Location = new Point(1, 1),
+                Size = new Size(250, 350)
+            );
             
+            //Página do CLiente
             lbIdCLiente = new BiblioLabel(
                 Text = "Id Cliente", 
-                Location = new Point(5, 25),
+                Location = new Point(5, 5),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            lbIdVeiculoLeve = new BiblioLabel(
-                Text = "Id Veículo Leve",
-                Location = new Point(5, 50),
-                Font = new Font(this.Font, FontStyle.Bold)
+
+            cbIdCLiente = new BiblioComboBox(
+                Location = new Point(110, 5),
+                Size = new Size(100, 10)
             );
-            lbIdVeiculoPesado = new BiblioLabel(
-                Text = "Veículo Pesado",
-                Location = new Point(5, 75),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
+            cbIdCLiente.Items.AddRange(new string[]{"1", "2", "3", "4"});
+
             lbDataLocacao = new BiblioLabel(
                 Text = "Data de Locação",
-                Location = new Point(5, 100),
+                Location = new Point(5, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
             ) {
                 Size = new Size(200, 15)
             };
 
-
             mcDataLocacao = new BiblioMonthCalendar(
-                Location = new Point(5, 125)
+                Location = new Point(5, 40)
             ) {
                 MaxDate = new DateTime(2022, 12, 31),
                 MinDate = DateTime.Today,
                 ShowToday = true
             };
 
-            cbIdCLiente = new BiblioComboBox(
-                Location = new Point(110, 25),
-                Size = new Size(100, 10)
+            tpCliente = new BiblioTabPage(
+                Text = "Cliente",
+                Size = new Size(250, 350)
             );
-            cbIdCLiente.Items.AddRange(new string[]{"1", "2", "3", "4"});
 
+            //Página do Veículo Leve
+            lbIdVeiculoLeve = new BiblioLabel(
+                Text = "Id Veículo Leve",
+                Location = new Point(5, 5),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbModeloVeiculoLeve = new BiblioLabel(
+                Text = "Modelo Veículo Leve",
+                Location = new Point(5, 30),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbMarcaVeiculoLeve = new BiblioLabel(
+                Text = "Marca Veículo Leve",
+                Location = new Point(5, 55),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbPrecoVeiculoLeve = new BiblioLabel(
+                Text = "Preco Veículo Leve",
+                Location = new Point(5, 80),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbAnoVeiculoLeve = new BiblioLabel(
+                Text = "Ano Veículo Leve",
+                Location = new Point(5, 105),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+
+            tbModeloVeiculoLeve = new BiblioTextBox(
+                Location = new Point(110, 30),
+                Size = new Size(100, 5)
+            );
+            tbMarcaVeiculoLeve = new BiblioTextBox(
+                Location = new Point(110, 55),
+                Size = new Size(100, 5)
+            );
+            tbAnoVeiculoLeve = new BiblioTextBox(
+                Location = new Point(110, 105),
+                Size = new Size(100, 5)
+            );
+            mtbPrecoVeiculoLeve = new BiblioMaskedTextBox(
+                Location = new Point(110, 80),
+                Size = new Size(100, 5)
+            ) {
+                Mask = "$: "
+            };
+
+            tpVeiculoLeve = new BiblioTabPage(
+                Text = "Veículo Leve",
+                Size = new Size(250, 350)
+            );
             cbIdVeiculoLeve = new BiblioComboBox(
-                Location = new Point(110, 50),
+                Location = new Point(110, 5),
                 Size = new Size(100, 10)
             );
             cbIdVeiculoLeve.Items.AddRange(new string[]{"1", "2", "3", "4"});
 
+            //Página do Veículo Pesado
+            lbIdVeiculoPesado = new BiblioLabel(
+                Text = "Veículo Pesado",
+                Location = new Point(5, 5),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbModeloVeiculoPesado = new BiblioLabel(
+                Text = "Modelo Veículo Pesado",
+                Location = new Point(5, 30),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbMarcaVeiculoPesado = new BiblioLabel(
+                Text = "Marca Veículo Pesado",
+                Location = new Point(5, 55),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbPrecoVeiculoPesado = new BiblioLabel(
+                Text = "Preco Veículo Pesado",
+                Location = new Point(5, 80),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbAnoVeiculoPesado = new BiblioLabel(
+                Text = "Ano Veículo Pesado",
+                Location = new Point(5, 105),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+
+            tbModeloVeiculoPesado = new BiblioTextBox(
+                Location = new Point(110, 30),
+                Size = new Size(100, 5)
+            );
+            tbMarcaVeiculoPesado = new BiblioTextBox(
+                Location = new Point(110, 55),
+                Size = new Size(100, 5)
+            );
+            tbAnoVeiculoPesado = new BiblioTextBox(
+                Location = new Point(110, 105),
+                Size = new Size(100, 5)
+            );
+            mtbPrecoVeiculoPesado = new BiblioMaskedTextBox(
+                Location = new Point(110, 80),
+                Size = new Size(100, 5)
+            ) {
+                Mask = "$: "
+            };
+            
             cbIdVeiculoPesado = new BiblioComboBox(
-                Location = new Point(110, 75),
+                Location = new Point(110, 5),
                 Size = new Size(100, 10)
             );
             cbIdVeiculoPesado.Items.AddRange(new string[]{"1", "2", "3", "4"});
 
+            tpVeiculoPesado = new BiblioTabPage(
+                Text = "Veículo Pesado",
+                Size = new Size(250, 350)
+            );
+
+            //Configurações da Página
+            tcVeiculos.Controls.Add(this.tpCliente);
+            tcVeiculos.Controls.Add(this.tpVeiculoLeve);
+            tcVeiculos.Controls.Add(this.tpVeiculoPesado);
+
+            tpCliente.Controls.Add(this.lbIdCLiente);
+            tpCliente.Controls.Add(this.lbDataLocacao);
+            tpCliente.Controls.Add(this.cbIdCLiente);  
+            tpCliente.Controls.Add(this.mcDataLocacao); 
+
+            tpVeiculoLeve.Controls.Add(this.lbIdVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.lbModeloVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.lbMarcaVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.lbPrecoVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.lbAnoVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.tbModeloVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.tbMarcaVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.mtbPrecoVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.tbAnoVeiculoLeve);
+            tpVeiculoLeve.Controls.Add(this.cbIdVeiculoLeve);  
+
+            tpVeiculoPesado.Controls.Add(this.lbIdVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.lbModeloVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.lbMarcaVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.lbPrecoVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.lbAnoVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.tbModeloVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.tbMarcaVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.tbAnoVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.mtbPrecoVeiculoPesado);
+            tpVeiculoPesado.Controls.Add(this.cbIdVeiculoPesado); 
 
             this.Controls.Add(btnCadastra);  
-            this.Controls.Add(btnCancela);   
-            this.Controls.Add(lbIdCLiente);
-            this.Controls.Add(lbIdVeiculoLeve);
-            this.Controls.Add(lbIdVeiculoPesado);
-            this.Controls.Add(lbDataLocacao);
-            this.Controls.Add(cbIdCLiente);  
-            this.Controls.Add(cbIdVeiculoLeve);  
-            this.Controls.Add(cbIdVeiculoPesado); 
-            this.Controls.Add(mcDataLocacao); 
- 
+            this.Controls.Add(btnCancela);  
+            this.Controls.Add(tcVeiculos);
 
             this.Text = "Cadastro de Locações";
             this.Size = new Size(250, 350);
