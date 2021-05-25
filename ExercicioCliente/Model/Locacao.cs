@@ -16,30 +16,30 @@ namespace Model
         {
 
         }
-        public Locacao(Cliente cliente,
+        public Locacao(
+            Cliente cliente,
             DateTime DataLocacao,
             List<VeiculoLeve> VeiculosLeves,
             List<VeiculoPesado> VeiculosPesados
         )
         {
-            this.Id = Id;
+            this.Id = Context.locacoes.Count;
             this.IdCliente = IdCliente;
             this.Cliente = Cliente;
             this.DataLocacao = DataLocacao;
+            
+            Context.locacoes.Add(this);
 
             foreach (VeiculoLeve veiculo in VeiculosLeves)
             {
-                LocacaoVeiculoLeve locacaoVeiculoLeve = new LocacaoVeiculoLeve(this, veiculo);
+                new LocacaoVeiculoLeve(this, veiculo);
             }
 
             foreach (VeiculoPesado veiculo in VeiculosPesados)
             {
-                LocacaoVeiculoPesado locacaoVeiculoPesado = new LocacaoVeiculoPesado(this, veiculo);
+                new LocacaoVeiculoPesado(this, veiculo);
             }
 
-            Context DB = new Context();
-            DB.locacoes.Add(this);
-            DB.SaveChanges();
         }
 
         public double GetValorLocacao()
@@ -58,15 +58,14 @@ namespace Model
 
         public DateTime GetDataRetorno()
         {
-            int DiasRetorno = this.Cliente.DiasRetorno;
-
-            return this.DataLocacao.AddDays(DiasRetorno);
+            Cliente cliente = Cliente.GetCliente(this.IdCliente);
+            return this.DataLocacao.AddDays(Cliente.DiasRetorno);
         }
 
         public override string ToString()
         {
             string Print = String.Format(
-                "Data da Locação: {0:d}\nData de Decolução: {1:d}\nValor: {2:c}\nCliente: {3}",
+                "Data da Locação: {0:d}\nData de Devolução: {1:d}\nValor: {2:c}\nCliente: {3}",
                 this.DataLocacao,
                 this.GetDataRetorno(),
                 this.GetValorLocacao(),
@@ -126,51 +125,21 @@ namespace Model
 
         public static IEnumerable<Locacao> GetLocacoes()
         {
-            Context DB = new Context();
-            return from Locacao in DB.locacoes select Locacao;
+            return from Locacao in Context.locacoes select Locacao;
         }
-
+        public static Locacao GetLocacao(int Id) {
+            IEnumerable<Locacao> query = from Locacao in Context.locacoes where Locacao.Id == Id select Locacao;
+            
+            return query.First();
+        }
         public static int GetCount(int IdCliente)
         {
-            Context DB = new Context();
-            return (from Locacao in DB.locacoes where Locacao.IdCliente == IdCliente select Locacao).Count();
-        }
-
-        public static Locacao AtualizarLocacao(
-            Locacao locacao,
-            int campo,
-            string valor
-        ) {
-            switch (campo)
-            {
-                case 1: {
-                    Locacao.IdCliente = valor;
-                    break;
-                }
-                case 2: {
-                    Locacao.VeiculoLeve = valor;
-                    break;
-                }
-                case 3: {
-                    Locacao.VeiculoPesado = valor;
-                    break;
-                }
-                default: {
-                    Console.WriteLine("Campo digitado não existente/não possível de auterações.");
-                    break;
-                }
-                Context DB = new Context();
-                DB.locacoes.Update(Locacao);
-                DB.SaveChanges();
-                return locacao;
-            } 
+            return (from Locacao in Context.locacoes where Locacao.IdCliente == IdCliente select Locacao).Count();
         }
 
         public static Locacao ExcluirLocacao(int id) {
             Locacao locacao = GetLocacao(id);
-            Context DB = new Context();
-            DB.locacoes.Remove(Locacao);
-            DB.SaveChanges();
+            Context.locacoes.Remove(locacao);
             return locacao;
         }
     }//Término da classe Locação.

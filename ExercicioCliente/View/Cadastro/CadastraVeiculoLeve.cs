@@ -92,10 +92,11 @@ namespace TelaVeiculoLeve
                 Size = new Size(100, 10)                
             ) {
                 MaxDate = DateTime.Today,
-                MinDate = new DateTime(2005, 12, 31),
+                MinDate = new DateTime(2005, 01, 01),
                 CustomFormat = "yyyy",
                 Format = DateTimePickerFormat.Custom
             };
+
 
             this.Controls.Add(btnCadastra);
             this.Controls.Add(btnCancela);
@@ -125,8 +126,19 @@ namespace TelaVeiculoLeve
             );
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Cadastro efetuado com Sucesso!");
-            } else if (resultado == DialogResult.No)
+                string Marca = tbMarca.Text;
+                string Modelo = tbModelo.Text;
+                string Ano = dtpAnoVeiculo.Text;
+                string Preco = tbPreco.Text;
+                string Cor = tbCor.Text;
+                
+                try {
+                    Controller.VeiculoLeve.CriarVeiculoLeve(Marca, Modelo, Ano, Preco, Cor);
+                    
+                    MessageBox.Show("Cadastro efetuado com Sucesso!");
+                } catch(Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }            } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Cadastro Cancelado!");
             } else {

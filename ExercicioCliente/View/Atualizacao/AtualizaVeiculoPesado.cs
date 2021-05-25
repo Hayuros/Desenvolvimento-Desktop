@@ -118,7 +118,15 @@ namespace TelaVeiculoPesado
             );
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Atualização efetuada com Sucesso!");
+                try
+                {
+                    Controller.VeiculoPesado.AtualizarVeiculoPesado();
+                    MessageBox.Show("Atualização efetuada com Sucesso!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Atualização Cancelada!");

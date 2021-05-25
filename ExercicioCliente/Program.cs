@@ -24,7 +24,6 @@ namespace ExercicioCliente
         BiblioButton btnExcluiVeiculoLeve;
         BiblioButton btnExcluiVeiculoPesado;
         BiblioButton btnAtualizaCliente;
-        BiblioButton btnAtualizaLocacao;
         BiblioButton btnAtualizaVeiculoLeve;
         BiblioButton btnAtualizaVeiculoPesado;
 
@@ -48,7 +47,7 @@ namespace ExercicioCliente
             btnCadastraCliente.Click += new EventHandler(this.btnCadastraClienteClick);
 
             btnEditaCliente = new BiblioButton(
-                Text = "Editar Cliente",
+                Text = "Listar Cliente",
                 Location = new Point(80, 26),
                 Size = new Size(75, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
@@ -80,7 +79,7 @@ namespace ExercicioCliente
             btnCadastraLocacao.Click += new EventHandler(this.btnCadastraLocacaoClick);
 
             btnEditaLocacao = new BiblioButton(
-                Text = "Editar Locação",
+                Text = "Listar Locação",
                 Location = new Point(80, 76),
                 Size = new Size(75, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
@@ -94,14 +93,6 @@ namespace ExercicioCliente
                 Font = new Font(this.Font, FontStyle.Bold)
             );
             btnExcluiLocacao.Click += new EventHandler(this.btnExcluiLocacaoClick);
-
-            btnAtualizaLocacao = new BiblioButton(
-                Text = "Atualizar Locação",
-                Location = new Point(230, 76),
-                Size = new Size(75, 30),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            btnAtualizaLocacao.Click += new EventHandler(this.btnAtualizaLocacaoClick);
             
             btnCadastraVeiculoLeve = new BiblioButton(
                 Text = "Cadastrar Veículo Leve",
@@ -112,7 +103,7 @@ namespace ExercicioCliente
             btnCadastraVeiculoLeve.Click += new EventHandler(this.btnCadastraVeiculoLeveCLick);
 
             btnEditaVeiculoLeve = new BiblioButton(
-                Text = "Editar Veículo Leve",
+                Text = "Listar Veículo Leve",
                 Location = new Point(105, 126),
                 Size = new Size(100, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
@@ -144,7 +135,7 @@ namespace ExercicioCliente
             btnCadastraVeiculoPesado.Click += new EventHandler(this.btnCadastraVeiculoPesadoClick);
 
             btnEditaVeiculoPesado = new BiblioButton(
-                Text = "Editar Veículo Pesado",
+                Text = "Listar Veículo Pesado",
                 Location = new Point(105, 176),
                 Size = new Size(105, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
@@ -214,7 +205,6 @@ namespace ExercicioCliente
             this.Controls.Add(btnExcluiVeiculoLeve);
             this.Controls.Add(btnExcluiVeiculoPesado);
             this.Controls.Add(btnAtualizaCliente);
-            this.Controls.Add(btnAtualizaLocacao);
             this.Controls.Add(btnAtualizaVeiculoLeve);
             this.Controls.Add(btnAtualizaVeiculoPesado);
             this.Controls.Add(lbTextoCLiente);
@@ -266,9 +256,6 @@ namespace ExercicioCliente
         }
         private void btnAtualizaClienteClick(object sender, EventArgs e) {
             Application.Run(new MenuAtualizaCliente());
-        }
-        private void btnAtualizaLocacaoClick(object sender, EventArgs e) {
-            Application.Run(new MenuAtualizaLocacao());
         }
         private void btnAtualizaVeiculoLeveClick(object sender, EventArgs e) {
             Application.Run(new MenuAtualizaVeiculoLeve());

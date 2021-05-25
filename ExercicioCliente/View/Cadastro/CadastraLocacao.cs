@@ -1,10 +1,14 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing; 
+using System.Collections.Generic;
 using View.Biblio;
 
 namespace TelaLocacao {
     public class MenuCadastraLocacao : Form {
+        List<Model.VeiculoPesado> VeiculosPesados = new List<Model.VeiculoPesado>();
+        List<Model.VeiculoLeve> VeiculosLeves = new List<Model.VeiculoLeve>();
+
         //Todas as Páginas
         BiblioMonthCalendar mcDataLocacao;
         BiblioTabPage tpVeiculoLeve;
@@ -208,7 +212,9 @@ namespace TelaLocacao {
                 Location = new Point(110, 5),
                 Size = new Size(100, 10)
             );
-            cbIdVeiculoPesado.Items.AddRange(new string[]{"1", "2", "3", "4"});
+            int IVP = Convert.ToInt32(cbIdVeiculoPesado.SelectedValue);
+            string IdVeiculoPesado = Convert.ToString(Model.VeiculoPesado.GetVeiculoPesado(IVP));
+            cbIdVeiculoPesado.Items.AddRange(new string[]{IdVeiculoPesado});
 
             tpVeiculoPesado = new BiblioTabPage(
                 Text = "Veículo Pesado",
@@ -269,6 +275,25 @@ namespace TelaLocacao {
             );
             if (resultado == DialogResult.Yes)
             {
+
+                string stIdCliente = Convert.ToString(cbIdCLiente.SelectedValue);
+                string stDataLocacao = Convert.ToString(mcDataLocacao.SelectionStart);
+                int stVeiculoLeve = Convert.ToInt32(cbIdVeiculoLeve.SelectedValue);
+                int stVeiculoPesado = Convert.ToInt32(cbIdVeiculoPesado.SelectedValue);
+
+                Model.VeiculoPesado veiculoPesado = Controller.VeiculoPesado.GetVeiculoPesado(stVeiculoPesado);
+                VeiculosPesados.Add(veiculoPesado);
+                Model.VeiculoLeve veiculoLeve = Controller.VeiculoLeve.GetVeiculoLeve(stVeiculoLeve);
+                VeiculosLeves.Add(veiculoLeve);
+                try
+                {
+                    Controller.Locacao.CriarLocacao(stIdCliente, stDataLocacao,VeiculosLeves, VeiculosPesados);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
                 MessageBox.Show("Cadastro efetuado com Sucesso!");
             } else if (resultado == DialogResult.No)
             {

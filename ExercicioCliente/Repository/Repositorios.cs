@@ -1,20 +1,24 @@
 using System.Collections.Generic;
 using Model;
-using Microsoft.EntityFrameworkCore;
-
+using System;
+using Fake;
 namespace Repository
 {
-    public class Context : DbContext
+    public class Context
     {
-        public DbSet<Cliente> clientes { set; get; }
-        public DbSet<VeiculoPesado> veiculosPesados { set; get; }
-        public DbSet<VeiculoLeve> veiculosLeves { set; get; }
-        public DbSet<Locacao> locacoes { set; get; }
-        public DbSet<LocacaoVeiculoPesado> locacoesVeiculosPesados { set; get; }
-        public DbSet<LocacaoVeiculoLeve> locacoesVeiculosLeves { set; get; }
+        public static DBFake<Cliente> clientes = new DBFake<Cliente>();
+        public static DBFake<VeiculoPesado> veiculosPesados = new DBFake<VeiculoPesado>();
+        public static DBFake<VeiculoLeve> veiculosLeves = new DBFake<VeiculoLeve>();
+        public static DBFake<Locacao> locacoes = new DBFake<Locacao>();
+        public static DBFake<LocacaoVeiculoPesado> locacoesVeiculosPesados = new DBFake<LocacaoVeiculoPesado>();
+        public static DBFake<LocacaoVeiculoLeve> locacoesVeiculosLeves = new DBFake<LocacaoVeiculoLeve>();
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseMySql("Server=localhost;User Id=root;Database=locadora");
+        public void SaveChanges() {
 
+        }
+
+        public Context() {
+            
+        }
     }
 }

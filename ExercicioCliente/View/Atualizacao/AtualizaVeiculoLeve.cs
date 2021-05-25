@@ -9,12 +9,14 @@ namespace TelaVeiculoLeve
         BiblioButtonAtualiza btnAtualiza;
         BiblioButtonCancela btnCancela;
         
+        BiblioLabel lbId;
         BiblioLabel lbMarca;
         BiblioLabel lbModelo;
         BiblioLabel lbAnoVeiculo;
         BiblioLabel lbPreco;
         BiblioLabel lbCor;
 
+        BiblioTextBox tbId;
         BiblioTextBox tbMarca;
         BiblioTextBox tbModelo;
         BiblioTextBox tbPreco;
@@ -39,56 +41,67 @@ namespace TelaVeiculoLeve
             );
             btnCancela.Click += new EventHandler(this.btnCancelaClick);
             
+            lbId = new BiblioLabel(
+                Text = "Id Veículo",
+                Location = new Point(5, 10),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+
             lbMarca = new BiblioLabel(
                 Text = "Marca",
-                Location = new Point(5, 10),
+                Location = new Point(5, 40),
                 Font = new Font(this.Font, FontStyle.Bold)    
             );
 
             lbModelo = new BiblioLabel(
                 Text = "Modelo",
-                Location = new Point(5, 40),
+                Location = new Point(5, 70),
                 Font = new Font(this.Font, FontStyle.Bold)    
             );
 
             lbAnoVeiculo = new BiblioLabel(
                 Text = "Ano do Veiculo",
-                Location = new Point(5, 70),
+                Location = new Point(5, 100),
                 Font = new Font(this.Font, FontStyle.Bold)    
             );
 
             lbPreco = new BiblioLabel(
                 Text = "Preco",
-                Location = new Point(5,  100),
+                Location = new Point(5,  130),
                 Font = new Font(this.Font, FontStyle.Bold)    
             );
 
             lbCor = new BiblioLabel(
                 Text = "Cor",
-                Location = new Point(5, 130),
+                Location = new Point(5, 160),
                 Font = new Font(this.Font, FontStyle.Bold)    
             );
 
 
-            tbMarca = new BiblioTextBox(
+            tbId = new BiblioTextBox(
                 Location = new Point(105, 10),
                 Size = new Size(100, 10)
             );
-            tbModelo = new BiblioTextBox(
+
+            tbMarca = new BiblioTextBox(
                 Location = new Point(105, 40),
                 Size = new Size(100, 10)
             );
+            tbModelo = new BiblioTextBox(
+                Location = new Point(105, 70),
+                Size = new Size(100, 10)
+            );
             tbPreco = new BiblioTextBox(
-                Location = new Point(105,  100),
+                Location = new Point(105,  130),
                 Size = new Size(100, 10)
             );
             tbCor = new BiblioTextBox(
-                Location = new Point(105, 130),
+                Location = new Point(105, 160),
                 Size = new Size(100, 10)
             );
 
             dtpAnoVeiculo = new BiblioDateTimePicker(
-                Location = new Point(105, 70),
+                Location = new Point(105, 100),
                 Size = new Size(100, 10)                
             ) {
                 MaxDate = DateTime.Today,
@@ -97,18 +110,22 @@ namespace TelaVeiculoLeve
                 Format = DateTimePickerFormat.Custom
             };
 
+
             this.Controls.Add(btnAtualiza);
             this.Controls.Add(btnCancela);
+            this.Controls.Add(lbId);
             this.Controls.Add(lbMarca);
             this.Controls.Add(lbModelo);
             this.Controls.Add(lbAnoVeiculo);
             this.Controls.Add(lbPreco);
             this.Controls.Add(lbCor);
+            this.Controls.Add(tbId);
             this.Controls.Add(tbMarca);
             this.Controls.Add(tbModelo);
             this.Controls.Add(tbPreco);
             this.Controls.Add(tbCor);
             this.Controls.Add(dtpAnoVeiculo);
+
 
             this.Text = "Atualização de Veículos Leves";
             this.Size = new Size(220, 220);
@@ -124,7 +141,16 @@ namespace TelaVeiculoLeve
             );
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Atualização efetuada com Sucesso!");
+                try
+                {
+                    Controller.VeiculoLeve.AtualizarVeiculoLeve(tbId.Text);
+                    MessageBox.Show("Atualização efetuada com Sucesso!");
+                }
+                catch (System.Exception)
+                {
+                    
+                    throw;
+                }
             } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Atualização Cancelada!");

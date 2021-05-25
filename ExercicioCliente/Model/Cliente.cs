@@ -17,19 +17,21 @@ namespace Model
 
         public int DiasRetorno { set; get; } // Dias para Devolução
 
+        public Cliente() {
+
+        }
         public Cliente(string Nome,
             DateTime Aniversario,
             string Identificacao,
             int DiasRetorno)
         {
+            this.Id = Context.clientes.Count;
             this.Nome = Nome;
             this.Aniversario = Aniversario;
             this.Identificacao = Identificacao;
             this.DiasRetorno = DiasRetorno;
-            Context DB = new Context();
-
-            DB.clientes.Add(this);
-            DB.SaveChanges();
+            
+            Context.clientes.Add(this);
         }
 
         public override string ToString()
@@ -69,8 +71,7 @@ namespace Model
 
         public static IEnumerable<Cliente> GetClientes()
         {
-            Context DB = new Context();
-            return from cliente in DB.clientes select cliente;
+            return from cliente in Context.clientes select cliente;
         }
 
         public static int GetConta()
@@ -80,50 +81,27 @@ namespace Model
 
         public static void AddCliente(Cliente cliente)
         {
-            Context DB = new Context();
-            DB.clientes.Add(cliente);
+            Context.clientes.Add(cliente);
         }
 
         public static Cliente GetCliente(int Id)
         {
-            Context DB = new Context();
-            IEnumerable<Cliente> query = from cliente in DB.clientes where cliente.Id == Id select cliente;
+            IEnumerable<Cliente> query = from cliente in Context.clientes where cliente.Id == Id select cliente;
 
             return query.First();
 
         }
 
         public static Cliente AtualizarCliente(
-            Cliente cliente,
-            int campo,
-            string valor
+            Cliente cliente
         ) {
-            switch (campo)
-            {
-                case 1: {
-                    cliente.Nome = valor;
-                    break;
-                }
-                case 2: {
-                    cliente.Identificacao = valor;
-                    break;
-                }
-                default: {
-                    Console.WriteLine("Campo digitado não existente/não possível de auterações.");
-                    break;
-                }
-                Context DB = new Context();
-                DB.clientes.Update(cliente);
-                DB.SaveChanges();
-                return cliente;
-            } 
-        }
+            Context.clientes.Update(cliente);
+            return cliente;
+        } 
 
         public static Cliente ExcluirCliente(int id) {
             Cliente cliente = GetCliente(id);
-            Context DB = new Context();
-            DB.clientes.Remove(cliente);
-            DB.SaveChanges();
+            Context.clientes.Remove(cliente);
             return cliente;
         }
     } //Término da classe cliente.

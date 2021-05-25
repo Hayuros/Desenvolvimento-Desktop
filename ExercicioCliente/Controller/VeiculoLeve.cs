@@ -35,8 +35,8 @@ namespace Controller
             );
         }
 
-        public static IEnumerable<Model.VeiculoLeve> ListaVeiculoLeve()
-        {
+
+        public static IEnumerable<Model.VeiculoLeve> GetVeiculoLeves() {
             return Model.VeiculoLeve.GetVeiculoLeve();
         }
 
@@ -52,35 +52,15 @@ namespace Controller
             return Model.VeiculoLeve.GetVeiculoLeve(Id);
         }
 
+        public static IEnumerable<Model.VeiculoLeve> ListaVeiculosLeves()
+        {
+            return Model.VeiculoLeve.GetVeiculoLeve();
+        }
 
         public static Model.VeiculoLeve AtualizarVeiculoLeve(
-            Model.VeiculoLeve veiculoLeve,
-            string opcao,
-            string valor
+            Model.VeiculoLeve veiculoLeve
         ) {
-            int campo = Convert.ToInt32(opcao);
-            switch (campo)
-            {
-                case 1: {
-                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
-                }
-                case 2: {
-                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
-                }
-                case 3: {
-                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
-                }
-                case 4: {
-                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
-                }
-                case 5: {
-                    return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, campo, valor);
-                }
-                default: {
-                    throw new Exception("Operação Inválida");
-
-                }
-            }
+            return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve);
         }
 
         public static void ExcluirVeiculoLeve(string StringId) {

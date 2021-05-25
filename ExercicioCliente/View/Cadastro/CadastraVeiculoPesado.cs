@@ -119,6 +119,14 @@ namespace TelaVeiculoPesado
             );
             if (resultado == DialogResult.Yes)
             {
+                string Marca = tbMarca.Text;
+                string Modelo = tbModelo.Text;
+                string Ano = dtpAnoVeiculo.Text;
+                string Preco = tbPreco.Text;
+                string Restricoes = tbRestricoes.Text;
+
+                Controller.VeiculoPesado.CriarVeiculoPesado(Marca, Modelo, Ano, Preco, Restricoes);
+
                 MessageBox.Show("Cadastro efetuado com Sucesso!");
             } else if (resultado == DialogResult.No)
             {

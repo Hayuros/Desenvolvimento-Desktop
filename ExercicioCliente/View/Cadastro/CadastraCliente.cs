@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing; 
 using View.Biblio;
@@ -16,21 +17,16 @@ namespace TelaCliente
         BiblioLabel lbDiasRetorno;
 
         BiblioTextBox tbNome;
-        BiblioTextBox tbAniversario;
 
+        BiblioMaskedTextBox mtbAniversario;
         BiblioMaskedTextBox mtbIdentificacao;
 
         BiblioNumericUpDown nupDiasRetorno;
 
-        BiblioGroupBox gbSexo;
-        BiblioRadioButton rbHomem;
-        BiblioRadioButton rbMulher;
-        BiblioRadioButton rbNaoInformado;
-
         public MenuCadastraCliente() {
             btnCadastra = new BiblioButtonCadastra(
                 Text = this.Text,
-                Location = new Point(20, 240),
+                Location = new Point(20, 135),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
@@ -38,7 +34,7 @@ namespace TelaCliente
             
             btnCancela = new BiblioButtonCancela(
                 Text = this.Text,
-                Location = new Point(110, 240),
+                Location = new Point(110, 135),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
@@ -67,10 +63,12 @@ namespace TelaCliente
                 Location = new Point(105, 15),
                 Size = new Size(100, 10)
             );
-            tbAniversario = new BiblioTextBox(
+            mtbAniversario = new BiblioMaskedTextBox(
                 Location = new Point(105, 45),
                 Size = new Size(100, 10)
-            );
+            ) {
+                Mask = "00/00/0000"
+            };
 
 
             mtbIdentificacao = new BiblioMaskedTextBox(
@@ -93,47 +91,19 @@ namespace TelaCliente
             };
             
 
-            gbSexo = new BiblioGroupBox(
-                Text = "Sexo",
-                Location =  new Point(5, 135),
-                Size = new Size(200, 90)
-            );
-
-
-            rbHomem = new BiblioRadioButton(
-                Text = "Homem",
-                Location = new Point(8, 15),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            rbMulher = new BiblioRadioButton(
-                Text = "Mulher",
-                Location = new Point(8, 35),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            rbNaoInformado = new BiblioRadioButton(
-                Text = "Nenhum",
-                Location = new Point(8, 57),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-
-
-            this.Controls.Add(btnCadastra );
+            this.Controls.Add(btnCadastra);
             this.Controls.Add(btnCancela);
             this.Controls.Add(lbNome);
             this.Controls.Add(lbAniversario);
             this.Controls.Add(lbIdentificacao);
             this.Controls.Add(lbDiasRetorno);
             this.Controls.Add(tbNome);
-            this.Controls.Add(tbAniversario);
+            this.Controls.Add(mtbAniversario);
             this.Controls.Add(mtbIdentificacao);
             this.Controls.Add(nupDiasRetorno);
-            this.Controls.Add(gbSexo);
-            gbSexo.Controls.Add(rbHomem);
-            gbSexo.Controls.Add(rbMulher);
-            gbSexo.Controls.Add(rbNaoInformado);
 
             this.Text = "Cadastro de Clientes";
-            this.Size = new Size(220, 305);
+            this.Size = new Size(220, 200);
             Application.Run(this);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
@@ -148,7 +118,17 @@ namespace TelaCliente
             );
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Cadastro efetuado com Sucesso!");
+                string stNome = tbNome.Text;
+                string stAniversario = mtbAniversario.Text;
+                string stIdentificacao = mtbIdentificacao.Text;
+                string stDiasRetorno = Convert.ToString(nupDiasRetorno.Value);
+                try {
+                    Controller.Cliente.CriarCliente(stNome, stAniversario, stIdentificacao, stDiasRetorno);
+                    
+                    MessageBox.Show("Cadastro efetuado com Sucesso!");
+                } catch(Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
             } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Cadastro Cancelado!");

@@ -20,9 +20,7 @@ namespace Model
         {
             this.Restricoes = Restricoes;
 
-            Context DB = new Context();
-            DB.veiculosPesados.Add(this);
-            DB.SaveChanges();
+            Context.veiculosPesados.Add(this);
         }
 
         public override string ToString()
@@ -53,8 +51,7 @@ namespace Model
 
         public static IEnumerable<Model.VeiculoPesado> GetVeiculoPesado()
         {
-            Context DB = new Context();
-            return from VeiculoPesado in DB.veiculosPesados select VeiculoPesado;
+            return from VeiculoPesado in Context.veiculosPesados select VeiculoPesado;
         }
 
         public static int GetCount()
@@ -64,58 +61,24 @@ namespace Model
 
         public static VeiculoPesado GetVeiculoPesado(int Id)
         {
-            Context DB = new Context();
             return (
-                from VeiculoPesado in DB.veiculosPesados
+                from VeiculoPesado in Context.veiculosPesados
                 where VeiculoPesado.Id == Id
                 select VeiculoPesado
             ).First();
         }
 
          public static VeiculoPesado AtualizarVeiculoPesado(
-            VeiculoPesado veiculoPesado,
-            int campo,
-            string valor
+            VeiculoPesado veiculoPesado
         ) {
-            switch (campo)
-            {
-                case 1: {
-                    VeiculoPesado.Marca = valor;
-                    break;
-                }
-                case 2: {
-                    VeiculoPesado.Modelo = valor;
-                    break;
-                }
-                case 3: {
-                    VeiculoPesado.Ano = valor;
-                    break;
-                }
-                case 4: {
-                    VeiculoPesado.Preco = valor;
-                    break;
-                }
-                case 5: {
-                    veiculoPesado.Restricoes = valor;
-                    break;
-                }
-                default: {
-                    Console.WriteLine("Campo digitado não existente/não possível de auterações.");
-                    break;
-                }
-                Context DB = new Context();
-                DB.veiculosPesados.Update(VeiculoPesado);
-                DB.SaveChanges();
-                return VeiculoPesado;
-            } 
+            Context.veiculosPesados.Update(veiculoPesado);
+            return veiculoPesado;
         }
 
         public static VeiculoPesado ExcluirVeiculoPesado(int id) {
             VeiculoPesado veiculoPesado = GetVeiculoPesado(id);
-            Context DB = new Context();
-            DB.veiculosPesados.Remove(VeiculoPesado);
-            DB.SaveChanges();
-            return VeiculoPesado;
+            Context.veiculosPesados.Remove(veiculoPesado);
+            return veiculoPesado;
         }
     }
 }
