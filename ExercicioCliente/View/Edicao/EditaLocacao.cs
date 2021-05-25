@@ -40,7 +40,7 @@ namespace TelaLocacao {
 
             
             lbIdCLiente = new BiblioLabel(
-                Text = "Id Cliente", 
+                Text = "Controller.Locacao.ListaLocacao()", 
                 Location = new Point(5, 25),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
@@ -121,7 +121,16 @@ namespace TelaLocacao {
             );
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Edição efetuada com Sucesso!");
+                try
+                {
+                    Controller.Locacao.ListarLocacoes();
+                    MessageBox.Show("Edição efetuada com Sucesso!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+               
             } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Edição Cancelada!");

@@ -22,28 +22,26 @@ namespace Model
             VeiculoLeve veiculoLeve
         )
         {
-            this.Id = Id;
+            this.Id = Context.locacoesVeiculosLeves.Count;
             this.IdLocacao = locacao.Id;
             this.locacao = locacao;
             this.IdVeiculoLeve = veiculoLeve.Id;
             this.veiculoLeve = veiculoLeve;
 
-            Context DB = new Context();
-            DB.locacoesVeiculosLeves.Add(this);
-            DB.SaveChanges();
+            Context.locacoesVeiculosLeves.Add(this);
         }
 
         public static IEnumerable<Model.LocacaoVeiculoLeve> GetVeiculos(int IdLocacao)
         {
-            Context DB = new Context();
-            return from Veiculo in DB.locacoesVeiculosLeves where Veiculo.IdLocacao == IdLocacao select Veiculo;
+            Context Context = new Context();
+            return from Veiculo in Context.locacoesVeiculosLeves where Veiculo.IdLocacao == IdLocacao select Veiculo;
         }
 
         public static double GetTotal(int IdLocacao)
         {
-            Context DB = new Context();
+            Context Context = new Context();
             return (
-                from Veiculo in DB.locacoesVeiculosLeves
+                from Veiculo in Context.locacoesVeiculosLeves
                 where Veiculo.IdLocacao == IdLocacao
                 select Veiculo.veiculoLeve.Preco
             ).Sum();

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing; 
 using View.Biblio;
@@ -10,27 +11,14 @@ namespace TelaCliente
         BiblioButtonExclui btnExclui;
         BiblioButtonCancela btnCancela;
 
-        BiblioLabel lbNome;
-        BiblioLabel lbAniversario;
-        BiblioLabel lbIdentificacao;
-        BiblioLabel lbDiasRetorno;
+        BiblioLabel lbId;
 
-        BiblioTextBox tbNome;
-        BiblioTextBox tbAniversario;
-
-        BiblioMaskedTextBox mtbIdentificacao;
-
-        BiblioNumericUpDown nupDiasRetorno;
-
-        BiblioGroupBox gbSexo;
-        BiblioRadioButton rbHomem;
-        BiblioRadioButton rbMulher;
-        BiblioRadioButton rbNaoInformado;
+        BiblioTextBox tbId;
 
         public MenuExcluiCliente() {
             btnExclui = new BiblioButtonExclui(
                 Text = this.Text,
-                Location = new Point(20, 240),
+                Location = new Point(20, 50),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
@@ -38,102 +26,31 @@ namespace TelaCliente
             
             btnCancela = new BiblioButtonCancela(
                 Text = this.Text,
-                Location = new Point(110, 240),
+                Location = new Point(110, 50),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
             btnCancela.Click += new EventHandler(this.btnCancelaClick);
 
-
-            lbNome = new BiblioLabel(Text = "Nome",
+            lbId = new BiblioLabel(
+                Text = "Id Cliente",
                 Location = new Point(5, 15),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            lbAniversario = new BiblioLabel(Text = "Aniversario",
-                Location = new Point(5, 45),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            lbIdentificacao = new BiblioLabel(Text = "Identificação",
-                Location = new Point(5, 75),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            lbDiasRetorno = new BiblioLabel(Text = "DiasRetorno",
-                Location = new Point(5, 105),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            
 
-            tbNome = new BiblioTextBox(
+            tbId = new BiblioTextBox(
                 Location = new Point(105, 15),
                 Size = new Size(100, 10)
             );
-            tbAniversario = new BiblioTextBox(
-                Location = new Point(105, 45),
-                Size = new Size(100, 10)
-            );
 
 
-            mtbIdentificacao = new BiblioMaskedTextBox(
-                Location = new Point(105, 75),
-                Size = new Size(100, 10)
-            ) {
-                Mask = "000.000.000-00"
-            };
-
-
-            nupDiasRetorno = new BiblioNumericUpDown(
-                Location = new Point(105, 105),
-                Size = new Size(100, 10)               
-            ) {
-                Value = 5,
-                Maximum = 30,
-                Minimum = 5,
-                Increment = 5,
-                ReadOnly = true
-            };
-            
-
-            gbSexo = new BiblioGroupBox(
-                Text = "Sexo",
-                Location =  new Point(5, 135),
-                Size = new Size(200, 90)
-            );
-
-
-            rbHomem = new BiblioRadioButton(
-                Text = "Homem",
-                Location = new Point(8, 15),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            rbMulher = new BiblioRadioButton(
-                Text = "Mulher",
-                Location = new Point(8, 35),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            rbNaoInformado = new BiblioRadioButton(
-                Text = "Nenhum",
-                Location = new Point(8, 57),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-
-
-            this.Controls.Add(btnExclui );
+            this.Controls.Add(btnExclui);
             this.Controls.Add(btnCancela);
-            this.Controls.Add(lbNome);
-            this.Controls.Add(lbAniversario);
-            this.Controls.Add(lbIdentificacao);
-            this.Controls.Add(lbDiasRetorno);
-            this.Controls.Add(tbNome);
-            this.Controls.Add(tbAniversario);
-            this.Controls.Add(mtbIdentificacao);
-            this.Controls.Add(nupDiasRetorno);
-            this.Controls.Add(gbSexo);
-            gbSexo.Controls.Add(rbHomem);
-            gbSexo.Controls.Add(rbMulher);
-            gbSexo.Controls.Add(rbNaoInformado);
+            this.Controls.Add(lbId);
+            this.Controls.Add(tbId);
 
             this.Text = "Exclusão de Clientes";
-            this.Size = new Size(220, 305);
+            this.Size = new Size(220, 115);
             Application.Run(this);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
@@ -148,7 +65,16 @@ namespace TelaCliente
             );
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Exclusão efetuada com Sucesso!");
+                int Id = Convert.ToInt32(tbId.Text);
+                try
+                {
+                    Model.Cliente.ExcluirCliente(Id);
+                    MessageBox.Show("Exclusão efetuada com Sucesso!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Está exclusão não foi permitida/Id Inválido.");
+                }
             } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Exclusão Cancelada!");

@@ -52,34 +52,15 @@ namespace Controller
             return Model.VeiculoPesado.GetVeiculoPesado(Id);
         }
 
-        public static Model.VeiculoPesado AtualizarVeiculoPesado(
-            Model.VeiculoPesado veiculoPesado,
-            string opcao,
-            string valor
-        ) {
-            int campo = Convert.ToInt32(opcao);
-            switch (campo)
-            {
-                case 1: {
-                    return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, campo, valor);
-                }
-                case 2: {
-                    return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, campo, valor);
-                }
-                case 3: {
-                    return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, campo, valor);
-                }
-                case 4: {
-                    return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, campo, valor);
-                }
-                case 5: {
-                    return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, campo, valor);
-                }
-                default: {
-                    throw new Exception("Operação Inválida");
+        public static IEnumerable<Model.VeiculoLeve> ListaVeiculosPesados()
+        {
+            return Model.VeiculoLeve.GetVeiculoLeve();
+        }
 
-                }
-            }
+        public static Model.VeiculoLeve AtualizarVeiculoPesado(
+            Model.VeiculoLeve veiculoLeve
+        ) {
+            return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve);
         }
 
         public static void ExcluirVeiculoPesado(string StringId) {

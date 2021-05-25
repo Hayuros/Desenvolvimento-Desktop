@@ -31,36 +31,17 @@ namespace Controller
                 throw new Exception("A Data de Locação não pode ser maior do que a data atual");
             }
 
-            return new Model.Locacao(clientes, DataLocacao, veiculosLeves, veiculosPesados);
+            return new Model.Locacao(
+                clientes, 
+                DataLocacao, 
+                veiculosLeves, 
+                veiculosPesados
+            );
         }
 
         public static IEnumerable<Model.Locacao> GetLocacoes()
         {
             return Model.Locacao.GetLocacoes();
-        }
-
-        public static Model.Locacao AtualizarLocacao(
-            Model.Locacao locacao,
-            string opcao,
-            string valor
-        ) {
-            int campo = Convert.ToInt32(opcao);
-            switch (campo)
-            {
-                case 1: {
-                    return Model.Locacao.AtualizarLocacao(locacao, campo, valor);
-                }
-                case 2: {
-                    return Model.Locacao.AtualizarLocacao(locacao, campo, valor);
-                }
-                case 3: {
-                    return Model.Locacao.AtualizarLocacao(locacao, campo, valor);
-                }
-                default: {
-                    throw new Exception("Operação Inválida");
-
-                }
-            }
         }
 
         public static void ExcluirLocacao(string StringId) {
@@ -73,6 +54,16 @@ namespace Controller
             {
                 Console.WriteLine($"Está exclusão não foi permitida/Id Inválido." +e.Message);
             }
+        }
+
+        public static void ListarLocacoes()
+        {
+            foreach (Model.Locacao locacao in Controller.Locacao.GetLocacoes())
+            {
+                Console.WriteLine("===================================");
+                Console.WriteLine(locacao);
+            }
+            Console.WriteLine("===================================");
         }
     }//Término da classe Locação.
 }

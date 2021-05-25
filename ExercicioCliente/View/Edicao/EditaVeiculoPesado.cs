@@ -118,7 +118,17 @@ namespace TelaVeiculoPesado
             );
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Edição efetuado com Sucesso!");
+                try
+                {
+                    Controller.VeiculoPesado.ListaVeiculosPesados();
+                    MessageBox.Show("Edição efetuado com Sucesso!");    
+                }
+                catch (System.Exception)
+                {
+                    
+                    throw;
+                }
+                
             } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Edição Cancelado!");

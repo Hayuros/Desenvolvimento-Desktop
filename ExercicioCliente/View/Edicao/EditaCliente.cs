@@ -10,6 +10,7 @@ namespace TelaCliente
         BiblioButtonEdita btnEdita;
         BiblioButtonCancela btnCancela;
 
+        BiblioLabel lbId;
         BiblioLabel lbNome;
         BiblioLabel lbAniversario;
         BiblioLabel lbIdentificacao;
@@ -21,16 +22,12 @@ namespace TelaCliente
         BiblioMaskedTextBox mtbIdentificacao;
 
         BiblioNumericUpDown nupDiasRetorno;
-
-        BiblioGroupBox gbSexo;
-        BiblioRadioButton rbHomem;
-        BiblioRadioButton rbMulher;
-        BiblioRadioButton rbNaoInformado;
+        BiblioNumericUpDown nupId;
 
         public MenuEditaCliente() {
             btnEdita = new BiblioButtonEdita(
                 Text = this.Text,
-                Location = new Point(20, 240),
+                Location = new Point(20, 165),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
@@ -38,43 +35,47 @@ namespace TelaCliente
             
             btnCancela = new BiblioButtonCancela(
                 Text = this.Text,
-                Location = new Point(110, 240),
+                Location = new Point(110, 165),
                 BackColor = this.BackColor,
                 Font = new Font(this.Font, FontStyle.Bold)
             );
             btnCancela.Click += new EventHandler(this.btnCancelaClick);
 
-
-            lbNome = new BiblioLabel(Text = "Nome",
+            lbId = new BiblioLabel(
+                Text = "Id Cliente",
                 Location = new Point(5, 15),
-                Font = new Font(this.Font, FontStyle.Bold)
+                Font = new Font(this.Font, FontStyle.Bold)  
             );
-            lbAniversario = new BiblioLabel(Text = "Aniversario",
+            lbNome = new BiblioLabel(Text = "Nome",
                 Location = new Point(5, 45),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            lbIdentificacao = new BiblioLabel(Text = "Identificação",
+            lbAniversario = new BiblioLabel(Text = "Aniversario",
                 Location = new Point(5, 75),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            lbDiasRetorno = new BiblioLabel(Text = "DiasRetorno",
+            lbIdentificacao = new BiblioLabel(Text = "Identificação",
                 Location = new Point(5, 105),
+                Font = new Font(this.Font, FontStyle.Bold)
+            );
+            lbDiasRetorno = new BiblioLabel(Text = "DiasRetorno",
+                Location = new Point(5, 135),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
             
 
             tbNome = new BiblioTextBox(
-                Location = new Point(105, 15),
+                Location = new Point(105, 45),
                 Size = new Size(100, 10)
             );
             tbAniversario = new BiblioTextBox(
-                Location = new Point(105, 45),
+                Location = new Point(105, 75),
                 Size = new Size(100, 10)
             );
 
 
             mtbIdentificacao = new BiblioMaskedTextBox(
-                Location = new Point(105, 75),
+                Location = new Point(105, 105),
                 Size = new Size(100, 10)
             ) {
                 Mask = "000.000.000-00"
@@ -82,7 +83,18 @@ namespace TelaCliente
 
 
             nupDiasRetorno = new BiblioNumericUpDown(
-                Location = new Point(105, 105),
+                Location = new Point(105, 135),
+                Size = new Size(100, 10)               
+            ) {
+                Value = 5,
+                Maximum = 30,
+                Minimum = 5,
+                Increment = 5,
+                ReadOnly = true
+            };
+
+            nupId = new BiblioNumericUpDown(
+                Location = new Point(105, 15),
                 Size = new Size(100, 10)               
             ) {
                 Value = 5,
@@ -93,32 +105,9 @@ namespace TelaCliente
             };
             
 
-            gbSexo = new BiblioGroupBox(
-                Text = "Sexo",
-                Location =  new Point(5, 135),
-                Size = new Size(200, 90)
-            );
-
-
-            rbHomem = new BiblioRadioButton(
-                Text = "Homem",
-                Location = new Point(8, 15),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            rbMulher = new BiblioRadioButton(
-                Text = "Mulher",
-                Location = new Point(8, 35),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            rbNaoInformado = new BiblioRadioButton(
-                Text = "Nenhum",
-                Location = new Point(8, 57),
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-
-
             this.Controls.Add(btnEdita );
             this.Controls.Add(btnCancela);
+            this.Controls.Add(lbId);
             this.Controls.Add(lbNome);
             this.Controls.Add(lbAniversario);
             this.Controls.Add(lbIdentificacao);
@@ -127,13 +116,11 @@ namespace TelaCliente
             this.Controls.Add(tbAniversario);
             this.Controls.Add(mtbIdentificacao);
             this.Controls.Add(nupDiasRetorno);
-            this.Controls.Add(gbSexo);
-            gbSexo.Controls.Add(rbHomem);
-            gbSexo.Controls.Add(rbMulher);
-            gbSexo.Controls.Add(rbNaoInformado);
+            this.Controls.Add(nupId);
+
 
             this.Text = "Edição de Clientes";
-            this.Size = new Size(220, 305);
+            this.Size = new Size(220, 225);
             Application.Run(this);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
@@ -148,6 +135,7 @@ namespace TelaCliente
             );
             if (resultado == DialogResult.Yes)
             {
+                Controller.Cliente.ListaCliente();
                 MessageBox.Show("Edição efetuada com Sucesso!");
             } else if (resultado == DialogResult.No)
             {
