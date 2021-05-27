@@ -114,7 +114,6 @@ namespace TelaVeiculoLeve
 
             this.Text = "Cadastro de Veículos Leves";
             this.Size = new Size(220, 220);
-            Application.Run(this);
         }
 
         private void btnCadastraClick(object sender, EventArgs e) {

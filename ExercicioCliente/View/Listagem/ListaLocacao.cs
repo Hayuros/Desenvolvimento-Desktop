@@ -4,7 +4,7 @@ using System.Drawing;
 using View.Biblio;
 
 namespace TelaLocacao {
-    public class MenuEditaLocacao : Form {
+    public class MenuListaLocacao : Form {
         BiblioButtonEdita btnEdita;
         BiblioButtonCancela btnCancela;
 
@@ -21,7 +21,7 @@ namespace TelaLocacao {
 
         BiblioMonthCalendar mcDataLocacao;
 
-        public MenuEditaLocacao() {
+        public MenuListaLocacao() {
             btnEdita = new BiblioButtonEdita(
                 Text = this.Text,
                 Location = new Point(25, 275),
@@ -105,7 +105,6 @@ namespace TelaLocacao {
 
             this.Text = "Edição de Locações";
             this.Size = new Size(220, 350);
-            Application.Run(this);
         }
 
         private void btnCancelaClick(object sender, EventArgs e) {

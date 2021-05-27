@@ -48,7 +48,6 @@ namespace TelaVeiculoPesado
 
             this.Text = "Exclusão de Veículos Pesados";
             this.Size = new Size(220, 100);
-            Application.Run(this);
         }
 
         private void btnExcluiClick(object sender, EventArgs e) {

@@ -5,7 +5,7 @@ using View.Biblio;
 
 namespace TelaVeiculoLeve
 {
-    public class MenuEditaVeiculoLeve : Form{
+    public class MenuListaVeiculoLeve : Form{
         BiblioButtonEdita btnEdita;
         BiblioButtonCancela btnCancela;
         
@@ -25,7 +25,7 @@ namespace TelaVeiculoLeve
         BiblioDateTimePicker dtpAnoVeiculo;
         
         
-        public MenuEditaVeiculoLeve() {           
+        public MenuListaVeiculoLeve() {           
 
             btnEdita = new BiblioButtonEdita(
                 Text = this.Text,
@@ -130,7 +130,6 @@ namespace TelaVeiculoLeve
 
             this.Text = "Edição de Veículos Leves";
             this.Size = new Size(220, 220);
-            Application.Run(this);
         }
 
         private void btnEditaClick(object sender, EventArgs e) {

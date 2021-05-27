@@ -11,14 +11,15 @@ namespace ExercicioCliente
 {
     public class Program : Form
     {
+        string id;
         BiblioButton btnCadastraCliente;
         BiblioButton btnCadastraLocacao;
         BiblioButton btnCadastraVeiculoLeve;
         BiblioButton btnCadastraVeiculoPesado;
-        BiblioButton btnEditaCliente;
-        BiblioButton btnEditaLocacao;
-        BiblioButton btnEditaVeiculoLeve;
-        BiblioButton btnEditaVeiculoPesado;
+        BiblioButton btnListaCliente;
+        BiblioButton btnListaLocacao;
+        BiblioButton btnListaVeiculoLeve;
+        BiblioButton btnListaVeiculoPesado;
         BiblioButton btnExcluiCliente;
         BiblioButton btnExcluiLocacao;
         BiblioButton btnExcluiVeiculoLeve;
@@ -46,13 +47,13 @@ namespace ExercicioCliente
             );
             btnCadastraCliente.Click += new EventHandler(this.btnCadastraClienteClick);
 
-            btnEditaCliente = new BiblioButton(
+            btnListaCliente = new BiblioButton(
                 Text = "Listar Cliente",
                 Location = new Point(80, 26),
                 Size = new Size(75, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            btnEditaCliente.Click += new EventHandler(this.btnEditaClienteClick);
+            btnListaCliente.Click += new EventHandler(this.btnListaClienteClick);
 
             btnExcluiCliente = new BiblioButton(
                 Text = "Excluir Cliente",
@@ -78,13 +79,13 @@ namespace ExercicioCliente
             );
             btnCadastraLocacao.Click += new EventHandler(this.btnCadastraLocacaoClick);
 
-            btnEditaLocacao = new BiblioButton(
+            btnListaLocacao = new BiblioButton(
                 Text = "Listar Locação",
                 Location = new Point(80, 76),
                 Size = new Size(75, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            btnEditaLocacao.Click += new EventHandler(this.btnEditaLocacaoClick);
+            btnListaLocacao.Click += new EventHandler(this.btnListaLocacaoClick);
 
             btnExcluiLocacao = new BiblioButton(
                 Text = "Excluir Locação",
@@ -102,13 +103,13 @@ namespace ExercicioCliente
             );
             btnCadastraVeiculoLeve.Click += new EventHandler(this.btnCadastraVeiculoLeveCLick);
 
-            btnEditaVeiculoLeve = new BiblioButton(
+            btnListaVeiculoLeve = new BiblioButton(
                 Text = "Listar Veículo Leve",
                 Location = new Point(105, 126),
                 Size = new Size(100, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            btnEditaVeiculoLeve.Click += new EventHandler(this.btnEditaVeiculoLeveClick);
+            btnListaVeiculoLeve.Click += new EventHandler(this.btnListaVeiculoLeveClick);
 
             btnExcluiVeiculoLeve = new BiblioButton(
                 Text = "Excluir Veículo Leve",
@@ -134,13 +135,13 @@ namespace ExercicioCliente
             );
             btnCadastraVeiculoPesado.Click += new EventHandler(this.btnCadastraVeiculoPesadoClick);
 
-            btnEditaVeiculoPesado = new BiblioButton(
+            btnListaVeiculoPesado = new BiblioButton(
                 Text = "Listar Veículo Pesado",
                 Location = new Point(105, 176),
                 Size = new Size(105, 30),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            btnEditaVeiculoPesado.Click += new EventHandler(this.btnEditaVeiculoPesadoClick);
+            btnListaVeiculoPesado.Click += new EventHandler(this.btnListaVeiculoPesadoClick);
 
             btnExcluiVeiculoPesado = new BiblioButton(
                 Text = "Excluir Veículo Pesado",
@@ -196,10 +197,10 @@ namespace ExercicioCliente
             this.Controls.Add(btnCadastraLocacao);
             this.Controls.Add(btnCadastraVeiculoLeve);
             this.Controls.Add(btnCadastraVeiculoPesado);
-            this.Controls.Add(btnEditaCliente);
-            this.Controls.Add(btnEditaLocacao);
-            this.Controls.Add(btnEditaVeiculoLeve);
-            this.Controls.Add(btnEditaVeiculoPesado);
+            this.Controls.Add(btnListaCliente);
+            this.Controls.Add(btnListaLocacao);
+            this.Controls.Add(btnListaVeiculoLeve);
+            this.Controls.Add(btnListaVeiculoPesado);
             this.Controls.Add(btnExcluiCliente);
             this.Controls.Add(btnExcluiLocacao);
             this.Controls.Add(btnExcluiVeiculoLeve);
@@ -219,49 +220,64 @@ namespace ExercicioCliente
         }
 
         private void btnCadastraClienteClick(object sender, EventArgs e) {
-            Application.Run(new MenuCadastraCliente());
+            MenuCadastraCliente menuCadastraCliente = new MenuCadastraCliente();
+            menuCadastraCliente.Show();
         }
         private void btnCadastraLocacaoClick(object sender, EventArgs e) {
-            Application.Run(new MenuCadastraLocacao());
+            MenuCadastraLocacao menuCadastraLocacao = new MenuCadastraLocacao();
+            menuCadastraLocacao.Show();
         }
         private void btnCadastraVeiculoLeveCLick(object sender, EventArgs e) {
-            Application.Run(new MenuCadastraVeiculoLeve());
+            MenuCadastraVeiculoLeve menuCadastraVeiculoLeve = new MenuCadastraVeiculoLeve();
+            menuCadastraVeiculoLeve.Show();
         }
         private void btnCadastraVeiculoPesadoClick(object sender, EventArgs e) {
-            Application.Run(new MenuCadastraVeiculoPesado());
+            MenuCadastraVeiculoPesado menuCadastraVeiculoPesado = new MenuCadastraVeiculoPesado();
+            menuCadastraVeiculoPesado.Show();
         }
-        private void btnEditaClienteClick(object sender, EventArgs e) {
-            Application.Run(new MenuEditaCliente());
+        private void btnListaClienteClick(object sender, EventArgs e) {
+            MenuListaCliente menuListaCliente = new MenuListaCliente();
+            menuListaCliente.Show();
         }
-        private void btnEditaLocacaoClick(object sender, EventArgs e) {
-            Application.Run(new MenuEditaLocacao());
+        private void btnListaLocacaoClick(object sender, EventArgs e) {
+            MenuListaLocacao menuListaLocacao = new MenuListaLocacao();
+            menuListaLocacao.Show();
         }
-        private void btnEditaVeiculoLeveClick(object sender, EventArgs e) {
-            Application.Run(new MenuEditaVeiculoLeve());
+        private void btnListaVeiculoLeveClick(object sender, EventArgs e) {
+            MenuListaVeiculoLeve menuListaVeiculoLeve = new MenuListaVeiculoLeve();
+            menuListaVeiculoLeve.Show();
         }
-        private void btnEditaVeiculoPesadoClick(object sender, EventArgs e) {
-            Application.Run(new MenuEditaVeiculoPesado());
+        private void btnListaVeiculoPesadoClick(object sender, EventArgs e) {
+            MenuListaVeiculoPesado menuListaVeiculoPesado = new MenuListaVeiculoPesado();
+            menuListaVeiculoPesado.Show();
         }
         private void btnExcluiClienteClick(object sender, EventArgs e) {
-            Application.Run(new MenuExcluiCliente());
+            MenuExcluiCliente menuExcluiCliente = new MenuExcluiCliente();
+            menuExcluiCliente.Show();
         }
         private void btnExcluiLocacaoClick(object sender, EventArgs e) {
-            Application.Run(new MenuExcluiLocacao());
+            MenuExcluiLocacao menuExcluiLocacao = new MenuExcluiLocacao();
+            menuExcluiLocacao.Show();
         }
         private void btnExcluiVeiculoLeveClick(object sender, EventArgs e) {
-            Application.Run(new MenuExcluiVeiculoLeve());
+            MenuExcluiVeiculoLeve menuExcluiVeiculoLeve = new MenuExcluiVeiculoLeve();
+            menuExcluiVeiculoLeve.Show();
         }
         private void btnExcluiVeiculoPesadoClick(object sender, EventArgs e) {
-            Application.Run(new MenuExcluiVeiculoPesado());
+            MenuExcluiVeiculoPesado menuExcluiVeiculoPesado = new MenuExcluiVeiculoPesado();
+            menuExcluiVeiculoPesado.Show();
         }
         private void btnAtualizaClienteClick(object sender, EventArgs e) {
-            Application.Run(new MenuAtualizaCliente());
+            MenuAtualizaCliente menuAtualizaCliente = new MenuAtualizaCliente();
+            menuAtualizaCliente.Show();
         }
         private void btnAtualizaVeiculoLeveClick(object sender, EventArgs e) {
-            Application.Run(new MenuAtualizaVeiculoLeve());
+            MenuAtualizaVeiculoLeve menuAtualizaVeiculoLeve = new MenuAtualizaVeiculoLeve(id);
+            menuAtualizaVeiculoLeve.Show();
         }
         private void btnAtualizaVeiculoPesadoClick(object sender, EventArgs e) {
-            Application.Run(new MenuAtualizaVeiculoPesado());
+            MenuAtualizaVeiculoPesado menuAtualizaVeiculoPesado = new MenuAtualizaVeiculoPesado();
+            menuAtualizaVeiculoPesado.Show();
         }
     }
 }

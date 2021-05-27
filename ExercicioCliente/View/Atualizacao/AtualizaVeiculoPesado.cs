@@ -106,7 +106,6 @@ namespace TelaVeiculoPesado
 
             this.Text = "Atualização de Veículos Pesados";
             this.Size = new Size(220, 220);
-            Application.Run(this);
         }
 
         private void btnEditaClick(object sender, EventArgs e) {
@@ -120,7 +119,7 @@ namespace TelaVeiculoPesado
             {
                 try
                 {
-                    Controller.VeiculoPesado.AtualizarVeiculoPesado();
+                    // Controller.VeiculoPesado.AtualizarVeiculoPesado();
                     MessageBox.Show("Atualização efetuada com Sucesso!");
                 }
                 catch (Exception ex)

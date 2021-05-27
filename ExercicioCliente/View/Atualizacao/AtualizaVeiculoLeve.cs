@@ -24,7 +24,17 @@ namespace TelaVeiculoLeve
 
         BiblioDateTimePicker dtpAnoVeiculo;
 
-        public MenuAtualizaVeiculoLeve() {           
+        string id = "";
+        InputBox input = new InputBox(
+            "Alterar o Cliente",
+            "Informe o ID do Cliente",
+            ref id
+        );
+        public MenuAtualizaVeiculoLeve(string id) {  
+           
+            Model.VeiculoLeve veiculoLeve;
+            veiculoLeve = Controller.VeiculoLeve.GetVeiculoLeve(id);
+         
 
             btnAtualiza = new BiblioButtonAtualiza(
                 Text = this.Text,
@@ -82,23 +92,31 @@ namespace TelaVeiculoLeve
                 Location = new Point(105, 10),
                 Size = new Size(100, 10)
             );
+            tbId.Text = veiculoLeve.Id;
 
             tbMarca = new BiblioTextBox(
                 Location = new Point(105, 40),
                 Size = new Size(100, 10)
             );
+            tbMarca.Text = veiculoLeve.Marca;
+
             tbModelo = new BiblioTextBox(
                 Location = new Point(105, 70),
                 Size = new Size(100, 10)
             );
+            tbModelo.Text = veiculoLeve.Modelo;
+
             tbPreco = new BiblioTextBox(
                 Location = new Point(105,  130),
                 Size = new Size(100, 10)
             );
+            tbPreco.Text = Convert.ToString(veiculoLeve.Preco);
+
             tbCor = new BiblioTextBox(
                 Location = new Point(105, 160),
                 Size = new Size(100, 10)
             );
+            tbCor.Text = veiculoLeve.Cor;
 
             dtpAnoVeiculo = new BiblioDateTimePicker(
                 Location = new Point(105, 100),
@@ -109,8 +127,10 @@ namespace TelaVeiculoLeve
                 CustomFormat = "yyyy",
                 Format = DateTimePickerFormat.Custom
             };
+            dtpAnoVeiculo.DateTime = veiculoLeve.Ano;
 
 
+            this.Controls.Add(input);
             this.Controls.Add(btnAtualiza);
             this.Controls.Add(btnCancela);
             this.Controls.Add(lbId);
@@ -129,7 +149,6 @@ namespace TelaVeiculoLeve
 
             this.Text = "Atualização de Veículos Leves";
             this.Size = new Size(220, 220);
-            Application.Run(this);
         }
 
         private void btnAtualizaClick(object sender, EventArgs e) {
@@ -143,8 +162,14 @@ namespace TelaVeiculoLeve
             {
                 try
                 {
-                    Controller.VeiculoLeve.AtualizarVeiculoLeve(tbId.Text);
-                    MessageBox.Show("Atualização efetuada com Sucesso!");
+                    // Model.VeiculoLeve veiculoLeve;
+                    // veiculoLeve = Controller.VeiculoLeve.GetVeiculoLeve(id);
+                    // veiculoLeve.Marca = tbMarca.Text;
+                    // veiculoLeve.Modelo = tbModelo.Text;
+                    // veiculoLeve.Preco = Convert.ToDouble(tbPreco.Text);                    
+                    // veiculoLeve.Cor = tbCor.Text;
+                    // Controller.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve);
+                    // MessageBox.Show("Atualização efetuada com Sucesso!");
                 }
                 catch (System.Exception)
                 {

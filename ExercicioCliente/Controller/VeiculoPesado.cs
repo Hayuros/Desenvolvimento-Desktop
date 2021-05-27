@@ -52,15 +52,15 @@ namespace Controller
             return Model.VeiculoPesado.GetVeiculoPesado(Id);
         }
 
-        public static IEnumerable<Model.VeiculoLeve> ListaVeiculosPesados()
+        public static IEnumerable<Model.VeiculoPesado> ListaVeiculosPesados()
         {
-            return Model.VeiculoLeve.GetVeiculoLeve();
+            return Model.VeiculoPesado.GetVeiculoPesado();
         }
 
-        public static Model.VeiculoLeve AtualizarVeiculoPesado(
-            Model.VeiculoLeve veiculoLeve
+        public static Model.VeiculoPesado AtualizarVeiculoPesado(
+            Model.VeiculoPesado veiculoPesado
         ) {
-            return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve);
+            return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado);
         }
 
         public static void ExcluirVeiculoPesado(string StringId) {
