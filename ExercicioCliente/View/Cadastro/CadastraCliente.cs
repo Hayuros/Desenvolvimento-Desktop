@@ -104,7 +104,6 @@ namespace TelaCliente
 
             this.Text = "Cadastro de Clientes";
             this.Size = new Size(220, 200);
-            Application.Run(this);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
             this.Close();

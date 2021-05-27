@@ -51,7 +51,6 @@ namespace TelaVeiculoLeve
 
             this.Text = "Exclusão de Veículos Leves";
             this.Size = new Size(220, 100);
-            Application.Run(this);        
         }
 
         private void btnExcluiClick(object sender, EventArgs e) {

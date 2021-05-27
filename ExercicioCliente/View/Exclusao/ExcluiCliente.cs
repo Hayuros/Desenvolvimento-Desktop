@@ -51,7 +51,6 @@ namespace TelaCliente
 
             this.Text = "Exclusão de Clientes";
             this.Size = new Size(220, 115);
-            Application.Run(this);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
             this.Close();

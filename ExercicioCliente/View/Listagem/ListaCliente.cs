@@ -5,7 +5,7 @@ using View.Biblio;
 
 namespace TelaCliente
 {
-    public class MenuEditaCliente : Form{
+    public class MenuListaCliente : Form{
 
         BiblioButtonEdita btnEdita;
         BiblioButtonCancela btnCancela;
@@ -24,7 +24,7 @@ namespace TelaCliente
         BiblioNumericUpDown nupDiasRetorno;
         BiblioNumericUpDown nupId;
 
-        public MenuEditaCliente() {
+        public MenuListaCliente() {
             btnEdita = new BiblioButtonEdita(
                 Text = this.Text,
                 Location = new Point(20, 165),
@@ -121,7 +121,6 @@ namespace TelaCliente
 
             this.Text = "Edição de Clientes";
             this.Size = new Size(220, 225);
-            Application.Run(this);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
             this.Close();

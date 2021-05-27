@@ -259,7 +259,6 @@ namespace TelaLocacao {
 
             this.Text = "Cadastro de Locações";
             this.Size = new Size(250, 350);
-            Application.Run(this);
         }
 
         private void btnCancelaClick(object sender, EventArgs e) {

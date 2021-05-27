@@ -25,6 +25,9 @@ namespace TelaCliente
         BiblioNumericUpDown nupDiasRetorno;
 
         public MenuAtualizaCliente() {
+            // Model.Cliente cliente;
+            // cliente = Controller.Cliente.GetCliente();
+
             btnAtualiza = new BiblioButtonAtualiza(
                 Text = this.Text,
                 Location = new Point(20, 170),
@@ -114,7 +117,6 @@ namespace TelaCliente
 
             this.Text = "Atualização de Clientes";
             this.Size = new Size(220, 250);
-            Application.Run(this);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
             this.Close();

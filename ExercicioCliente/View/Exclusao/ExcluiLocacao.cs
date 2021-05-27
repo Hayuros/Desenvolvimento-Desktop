@@ -59,7 +59,6 @@ namespace TelaLocacao {
 
             this.Text = "Exclusão de Locações";
             this.Size = new Size(220, 100);
-            Application.Run(this);
         }
 
         private void btnCancelaClick(object sender, EventArgs e) {

@@ -107,7 +107,6 @@ namespace TelaVeiculoPesado
 
             this.Text = "Cadastro de Veículos Pesados";
             this.Size = new Size(220, 220);
-            Application.Run(this);
         }
 
         private void btnCadastraClick(object sender, EventArgs e) {
