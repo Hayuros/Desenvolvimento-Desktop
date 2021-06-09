@@ -11,7 +11,7 @@ namespace ExercicioCliente
 {
     public class Program : Form
     {
-        string id;
+        string id;     
         BiblioButton btnCadastraCliente;
         BiblioButton btnCadastraLocacao;
         BiblioButton btnCadastraVeiculoLeve;
@@ -233,49 +233,115 @@ namespace ExercicioCliente
         }
         private void btnCadastraVeiculoPesadoClick(object sender, EventArgs e) {
             MenuCadastraVeiculoPesado menuCadastraVeiculoPesado = new MenuCadastraVeiculoPesado();
-            menuCadastraVeiculoPesado.Show();
+            menuCadastraVeiculoPesado.Show(); 
         }
         private void btnListaClienteClick(object sender, EventArgs e) {
-            MenuListaCliente menuListaCliente = new MenuListaCliente();
+            string id = "";
+            InputBox input = new InputBox(
+                "Listagem de Clientes",
+                "Informe o ID do Cliente",
+                ref id
+            );
+            MenuListaCliente menuListaCliente = new MenuListaCliente(id);
             menuListaCliente.Show();
         }
         private void btnListaLocacaoClick(object sender, EventArgs e) {
-            MenuListaLocacao menuListaLocacao = new MenuListaLocacao();
+            string id = "";
+            InputBox input = new InputBox(
+                "Listagem de Locações",
+                "Informe o ID da Locação",
+                ref id
+            );
+            MenuListaLocacao menuListaLocacao = new MenuListaLocacao(id);
             menuListaLocacao.Show();
         }
         private void btnListaVeiculoLeveClick(object sender, EventArgs e) {
-            MenuListaVeiculoLeve menuListaVeiculoLeve = new MenuListaVeiculoLeve();
+            string id = "";
+            InputBox input = new InputBox(
+                "Listagem de Veículo Leve",
+                "Informe o ID do Veículo Leve",
+                ref id
+            );
+            MenuListaVeiculoLeve menuListaVeiculoLeve = new MenuListaVeiculoLeve(id);
             menuListaVeiculoLeve.Show();
         }
         private void btnListaVeiculoPesadoClick(object sender, EventArgs e) {
-            MenuListaVeiculoPesado menuListaVeiculoPesado = new MenuListaVeiculoPesado();
+            string id = "";
+            InputBox input = new InputBox(
+                "Listagem de Veículo Pesado",
+                "Informe o ID do Veículo Pesado",
+                ref id
+            );
+            MenuListaVeiculoPesado menuListaVeiculoPesado = new MenuListaVeiculoPesado(id);
             menuListaVeiculoPesado.Show();
         }
         private void btnExcluiClienteClick(object sender, EventArgs e) {
+            string id = "";
+            InputBox input = new InputBox(
+                "Exclusão de Cliente",
+                "Informe o ID do Cliente",
+                ref id
+            );
             MenuExcluiCliente menuExcluiCliente = new MenuExcluiCliente();
             menuExcluiCliente.Show();
         }
         private void btnExcluiLocacaoClick(object sender, EventArgs e) {
+            string id = "";
+            InputBox input = new InputBox(
+                "Exclusão de Locações",
+                "Informe o ID da Locação",
+                ref id
+            );
             MenuExcluiLocacao menuExcluiLocacao = new MenuExcluiLocacao();
             menuExcluiLocacao.Show();
         }
         private void btnExcluiVeiculoLeveClick(object sender, EventArgs e) {
+            string id = "";
+            InputBox input = new InputBox(
+                "Exclusão de Veículo Leve",
+                "Informe o ID do Veículo Leve",
+                ref id
+            );
             MenuExcluiVeiculoLeve menuExcluiVeiculoLeve = new MenuExcluiVeiculoLeve();
             menuExcluiVeiculoLeve.Show();
         }
         private void btnExcluiVeiculoPesadoClick(object sender, EventArgs e) {
+            string id = "";
+            InputBox input = new InputBox(
+                "Exclusão de Veículo Pesado",
+                "Informe o ID do Veículo Pesado",
+                ref id
+            );
             MenuExcluiVeiculoPesado menuExcluiVeiculoPesado = new MenuExcluiVeiculoPesado();
             menuExcluiVeiculoPesado.Show();
         }
         private void btnAtualizaClienteClick(object sender, EventArgs e) {
-            MenuAtualizaCliente menuAtualizaCliente = new MenuAtualizaCliente();
+            string id = "";
+            InputBox input = new InputBox(
+                "Listar o Cliente",
+                "Informe o ID do Cliente",
+                ref id
+            );
+            MenuAtualizaCliente menuAtualizaCliente = new MenuAtualizaCliente(id);
             menuAtualizaCliente.Show();
         }
         private void btnAtualizaVeiculoLeveClick(object sender, EventArgs e) {
+            string id = "";
+            InputBox input = new InputBox(
+                "Alterar o Veículo Leve",
+                "Informe o ID do Veículo Leve",
+                ref id
+            );
             MenuAtualizaVeiculoLeve menuAtualizaVeiculoLeve = new MenuAtualizaVeiculoLeve(id);
             menuAtualizaVeiculoLeve.Show();
         }
         private void btnAtualizaVeiculoPesadoClick(object sender, EventArgs e) {
+                        string id = "";
+            InputBox input = new InputBox(
+                "Alterar o Veículo Leve",
+                "Informe o ID do Veículo Leve",
+                ref id
+            );
             MenuAtualizaVeiculoPesado menuAtualizaVeiculoPesado = new MenuAtualizaVeiculoPesado();
             menuAtualizaVeiculoPesado.Show();
         }

@@ -13,7 +13,7 @@ namespace Controller
             string DiasRetorno
         )
         {
-            Regex rgx = new Regex("^\\d{3}\\,\\d{3}\\,\\d{3}\\-\\d{2}$");
+            Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$");
             if (!rgx.IsMatch(Identificacao))
             {
                 throw new Exception("\nC.P.F. Inválido\nPor favor digite um cpf válido.\nEx: 000.000.000-00");

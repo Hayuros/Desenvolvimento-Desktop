@@ -25,7 +25,7 @@ namespace TelaVeiculoLeve
         BiblioDateTimePicker dtpAnoVeiculo;
         
         
-        public MenuListaVeiculoLeve() {           
+        public MenuListaVeiculoLeve(string id) {           
 
             btnEdita = new BiblioButtonEdita(
                 Text = this.Text,

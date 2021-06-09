@@ -22,7 +22,7 @@ namespace TelaVeiculoPesado
 
         BiblioDateTimePicker dtpAnoVeiculo;
 
-        public MenuListaVeiculoPesado() {           
+        public MenuListaVeiculoPesado(string id) {           
             btnEdita = new BiblioButtonEdita(
                 Text = this.Text,
                 Location = new Point(30, 160),
