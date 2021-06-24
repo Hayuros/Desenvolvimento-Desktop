@@ -43,6 +43,17 @@ namespace Controller
         {
             return Model.Locacao.GetLocacoes();
         }
+        public static Model.Locacao GetLocacao(int Id)
+        {
+            // int TamanhoLista = Model.Locacao.GetConta();
+
+            // if (Id < 0 || TamanhoLista <= Id)
+            // {
+            //     throw new Exception("\nO Id informado é inválido.");
+            // }
+
+            return Model.Locacao.GetLocacao(Id);
+        }
 
         public static void ExcluirLocacao(string StringId) {
             int Id = Convert.ToInt32(StringId);

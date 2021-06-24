@@ -23,6 +23,8 @@ namespace TelaCliente
 
         BiblioNumericUpDown nupDiasRetorno;
 
+        delegate void Del(string nome);
+
         public MenuCadastraCliente() {
             btnCadastra = new BiblioButtonCadastra(
                 Text = this.Text,
@@ -75,7 +77,7 @@ namespace TelaCliente
                 Location = new Point(105, 75),
                 Size = new Size(100, 10)
             ) {
-                Mask = "000.000.000-00"
+                Mask = "000,000,000-00"
             };
 
 
@@ -124,6 +126,7 @@ namespace TelaCliente
                 try {
                     Controller.Cliente.CriarCliente(stNome, stAniversario, stIdentificacao, stDiasRetorno);
                     
+                    Del delNome = new Del(Notify);
                     MessageBox.Show("Cadastro efetuado com Sucesso!");
                 } catch(Exception ex) {
                     MessageBox.Show(ex.Message);
@@ -135,6 +138,10 @@ namespace TelaCliente
                 MessageBox.Show("Opção Inválida");
             }
             this.Close();
+        }
+
+        static void Notify(string stNome) {
+            MessageBox.Show($"Cliente: {stNome}");
         }
     }
 }

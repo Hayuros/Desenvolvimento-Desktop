@@ -24,16 +24,11 @@ namespace TelaVeiculoLeve
 
         BiblioDateTimePicker dtpAnoVeiculo;
 
-        string id = "";
-        InputBox input = new InputBox(
-            "Alterar o Cliente",
-            "Informe o ID do Cliente",
-            ref id
-        );
         public MenuAtualizaVeiculoLeve(string id) {  
            
             Model.VeiculoLeve veiculoLeve;
-            veiculoLeve = Controller.VeiculoLeve.GetVeiculoLeve(id);
+            veiculoLeve = Controller.VeiculoLeve.GetVeiculoLeve(Convert.ToInt32(id));
+
          
 
             btnAtualiza = new BiblioButtonAtualiza(
@@ -92,7 +87,7 @@ namespace TelaVeiculoLeve
                 Location = new Point(105, 10),
                 Size = new Size(100, 10)
             );
-            tbId.Text = veiculoLeve.Id;
+            tbId.Text = veiculoLeve.Id.ToString();
 
             tbMarca = new BiblioTextBox(
                 Location = new Point(105, 40),
@@ -127,10 +122,9 @@ namespace TelaVeiculoLeve
                 CustomFormat = "yyyy",
                 Format = DateTimePickerFormat.Custom
             };
-            dtpAnoVeiculo.DateTime = veiculoLeve.Ano;
+            dtpAnoVeiculo.Value = new DateTime(veiculoLeve.Ano, 1, 1);
 
 
-            this.Controls.Add(input);
             this.Controls.Add(btnAtualiza);
             this.Controls.Add(btnCancela);
             this.Controls.Add(lbId);

@@ -10,29 +10,19 @@ namespace TelaCliente
         BiblioButtonEdita btnEdita;
         BiblioButtonCancela btnCancela;
 
-        BiblioLabel lbId;
         BiblioLabel lbNome;
         BiblioLabel lbAniversario;
         BiblioLabel lbIdentificacao;
         BiblioLabel lbDiasRetorno;
+        BiblioLabel lbNomeBd;
+        BiblioLabel lbAniversarioBd;
+        BiblioLabel lbIdentificacaoBd;
+        BiblioLabel lbDiasRetornoBd;
 
-        BiblioTextBox tbNome;
-        BiblioTextBox tbAniversario;
+        public MenuListaCliente(string id) {
+            Model.Cliente cliente;
+            cliente = Controller.Cliente.GetCliente(Convert.ToInt32(id));
 
-        BiblioMaskedTextBox mtbIdentificacao;
-
-        BiblioNumericUpDown nupDiasRetorno;
-        BiblioNumericUpDown nupId;
-
-        public MenuListaCliente() {
-            btnEdita = new BiblioButtonEdita(
-                Text = this.Text,
-                Location = new Point(20, 165),
-                BackColor = this.BackColor,
-                Font = new Font(this.Font, FontStyle.Bold)
-            );
-            btnEdita.Click += new EventHandler(this.btnEditaClick);
-            
             btnCancela = new BiblioButtonCancela(
                 Text = this.Text,
                 Location = new Point(110, 165),
@@ -41,107 +31,67 @@ namespace TelaCliente
             );
             btnCancela.Click += new EventHandler(this.btnCancelaClick);
 
-            lbId = new BiblioLabel(
-                Text = "Id Cliente",
+            lbNome = new BiblioLabel(
+                Text = "Nome",
                 Location = new Point(5, 15),
-                Font = new Font(this.Font, FontStyle.Bold)  
+                Font = new Font(this.Font, FontStyle.Bold)
             );
-            lbNome = new BiblioLabel(Text = "Nome",
+            lbAniversario = new BiblioLabel(
+                Text = "Aniversario",
                 Location = new Point(5, 45),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            lbAniversario = new BiblioLabel(Text = "Aniversario",
+            lbIdentificacao = new BiblioLabel(
+                Text = "Identificação",
                 Location = new Point(5, 75),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            lbIdentificacao = new BiblioLabel(Text = "Identificação",
+            lbDiasRetorno = new BiblioLabel(
+                Text = "DiasRetorno",
                 Location = new Point(5, 105),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            lbDiasRetorno = new BiblioLabel(Text = "DiasRetorno",
-                Location = new Point(5, 135),
+
+            lbNomeBd = new BiblioLabel(
+                Text = cliente.Nome,
+                Location = new Point(110, 15),
                 Font = new Font(this.Font, FontStyle.Bold)
             );
-            
-
-            tbNome = new BiblioTextBox(
-                Location = new Point(105, 45),
-                Size = new Size(100, 10)
+            lbAniversarioBd = new BiblioLabel(
+                Text = cliente.Aniversario.ToString(),
+                Location = new Point(110, 45),
+                Font = new Font(this.Font, FontStyle.Bold)
             );
-            tbAniversario = new BiblioTextBox(
-                Location = new Point(105, 75),
-                Size = new Size(100, 10)
-            );
-
-
-            mtbIdentificacao = new BiblioMaskedTextBox(
-                Location = new Point(105, 105),
-                Size = new Size(100, 10)
+            lbIdentificacaoBd = new BiblioLabel(
+                Text = cliente.Identificacao.ToString(),
+                Location = new Point(110, 75),
+                Font = new Font(this.Font, FontStyle.Bold)
             ) {
-                Mask = "000.000.000-00"
+                Size = new Size(100, 100)
             };
-
-
-            nupDiasRetorno = new BiblioNumericUpDown(
-                Location = new Point(105, 135),
-                Size = new Size(100, 10)               
+            lbDiasRetornoBd = new BiblioLabel(
+                Text = cliente.DiasRetorno.ToString(),
+                Location = new Point(110, 105),
+                Font = new Font(this.Font, FontStyle.Bold)
             ) {
-                Value = 5,
-                Maximum = 30,
-                Minimum = 5,
-                Increment = 5,
-                ReadOnly = true
-            };
-
-            nupId = new BiblioNumericUpDown(
-                Location = new Point(105, 15),
-                Size = new Size(100, 10)               
-            ) {
-                Value = 5,
-                Maximum = 30,
-                Minimum = 5,
-                Increment = 5,
-                ReadOnly = true
+                Size = new Size(150, 100)
             };
             
-
-            this.Controls.Add(btnEdita );
             this.Controls.Add(btnCancela);
-            this.Controls.Add(lbId);
             this.Controls.Add(lbNome);
             this.Controls.Add(lbAniversario);
             this.Controls.Add(lbIdentificacao);
             this.Controls.Add(lbDiasRetorno);
-            this.Controls.Add(tbNome);
-            this.Controls.Add(tbAniversario);
-            this.Controls.Add(mtbIdentificacao);
-            this.Controls.Add(nupDiasRetorno);
-            this.Controls.Add(nupId);
+            this.Controls.Add(lbNomeBd);
+            this.Controls.Add(lbAniversarioBd);
+            this.Controls.Add(lbIdentificacaoBd);
+            this.Controls.Add(lbDiasRetornoBd);
 
 
             this.Text = "Edição de Clientes";
-            this.Size = new Size(220, 225);
+            this.Size = new Size(250, 250);
         }
         private void btnCancelaClick(object sender, EventArgs e) {
-            this.Close();
-        }
-        private void btnEditaClick(object sender, EventArgs e) {
-            DialogResult resultado = MessageBox.Show(
-                "Editar Cliente?",
-                "Edição do Cliente",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-            if (resultado == DialogResult.Yes)
-            {
-                Controller.Cliente.ListaCliente();
-                MessageBox.Show("Edição efetuada com Sucesso!");
-            } else if (resultado == DialogResult.No)
-            {
-                MessageBox.Show("Edição Cancelada!");
-            } else {
-                MessageBox.Show("Opção Inválida");
-            }
             this.Close();
         }
     }

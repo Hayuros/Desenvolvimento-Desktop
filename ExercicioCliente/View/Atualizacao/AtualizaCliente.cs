@@ -24,9 +24,9 @@ namespace TelaCliente
 
         BiblioNumericUpDown nupDiasRetorno;
 
-        public MenuAtualizaCliente() {
-            // Model.Cliente cliente;
-            // cliente = Controller.Cliente.GetCliente();
+        public MenuAtualizaCliente(string id) {
+            Model.Cliente cliente;
+            cliente = Controller.Cliente.GetCliente(Convert.ToInt32(id));
 
             btnAtualiza = new BiblioButtonAtualiza(
                 Text = this.Text,
